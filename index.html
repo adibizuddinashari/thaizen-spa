@@ -24,7 +24,7 @@
   --dark-card: #2a2318;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; font-size: 18px; }
 body {
   font-family: 'Jost', sans-serif;
   background: var(--warm-white);
@@ -426,7 +426,8 @@ header.scrolled .hamburger { color:var(--stone); }
 .cat-tab.active { background:var(--gold); border-color:var(--gold); color:var(--stone); font-weight:500; }
 .service-list {
   display:flex; flex-direction:column; gap:6px;
-  max-height:240px; overflow-y:auto; padding-right:4px; margin-bottom:16px;
+  max-height:420px; overflow-y:auto; padding-right:4px; margin-bottom:16px;
+  overscroll-behavior: contain;
 }
 .service-list::-webkit-scrollbar { width:3px; }
 .service-list::-webkit-scrollbar-thumb { background:rgba(184,144,42,0.3); }

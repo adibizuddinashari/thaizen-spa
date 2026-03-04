@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thaizen Wellness & Spa — Book Your Journey</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --clay: #c4a882;
+    --clay-light: #e8d9c5;
+    --clay-dark: #9a7d5e;
+    --sage: #7d8c6e;
+    --sage-light: #b5c4a4;
+    --stone: #4a4238;
+    --linen: #f5f0e8;
+    --warm-white: #faf7f2;
+    --bark: #6b5744;
+    --mist: #ddd5c8;
+    --accent: #c4a882;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--warm-white);
+    color: var(--stone);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Background texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse 80% 60% at 20% 10%, rgba(196,168,130,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 80% 90%, rgba(125,140,110,0.10) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(250,247,242,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(196,168,130,0.2);
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: var(--bark);
+  }
+  .logo span { font-style: italic; color: var(--clay-dark); }
+
+  nav { display: flex; gap: 32px; align-items: center; }
+  nav a {
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--stone);
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+  nav a:hover { opacity: 1; }
+
+  .nav-book {
+    background: var(--bark) !important;
+    color: var(--linen) !important;
+    padding: 10px 24px !important;
+    border-radius: 2px;
+    opacity: 1 !important;
+    font-weight: 500;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    padding: 140px 48px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    min-height: 100vh;
+    z-index: 1;
+  }
+
+  .hero-text h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--stone);
+    margin-bottom: 24px;
+  }
+  .hero-text h1 em {
+    font-style: italic;
+    color: var(--clay-dark);
+    display: block;
+  }
+
+  .hero-text p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--bark);
+    opacity: 0.8;
+    max-width: 380px;
+    margin-bottom: 36px;
+    font-weight: 300;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 36px;
+    align-items: center;
+  }
+  .hero-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .hero-meta-item .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--clay-dark);
+    line-height: 1;
+  }
+  .hero-meta-item .label {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.55;
+  }
+  .meta-divider {
+    width: 1px;
+    height: 40px;
+    background: var(--mist);
+  }
+
+  /* ── BOOKING CARD ── */
+  .booking-card {
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 24px 80px rgba(74,66,56,0.12), 0 4px 16px rgba(74,66,56,0.06);
+    overflow: hidden;
+    animation: slideUp 0.7s cubic-bezier(0.22,1,0.36,1) both;
+    animation-delay: 0.15s;
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card-header {
+    background: var(--stone);
+    padding: 28px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .card-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--linen);
+    letter-spacing: 0.06em;
+  }
+  .card-header .step-indicator {
+    display: flex;
+    gap: 8px;
+  }
+  .step-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: rgba(245,240,232,0.3);
+    transition: background 0.3s;
+  }
+  .step-dot.active { background: var(--clay); }
+  .step-dot.done { background: var(--sage-light); }
+
+  .card-body { padding: 36px; }
+
+  /* Steps */
+  .step { display: none; }
+  .step.active { display: block; animation: fadeIn 0.4s ease; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateX(10px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  /* Step 1 — Service */
+  .step-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--clay-dark);
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .service-card {
+    border: 1.5px solid var(--mist);
+    border-radius: 4px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    background: var(--warm-white);
+  }
+  .service-card:hover { border-color: var(--clay); background: white; }
+  .service-card.selected {
+    border-color: var(--clay-dark);
+    background: white;
+    box-shadow: 0 4px 20px rgba(154,125,94,0.15);
+  }
+  .service-card.selected::after {
+    content: '✓';
+    position: absolute;
+    top: 10px; right: 12px;
+    font-size: 0.75rem;
+    color: var(--clay-dark);
+    font-weight: 600;
+  }
+
+  .service-icon { font-size: 1.4rem; margin-bottom: 8px; }
+  .service-name {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--stone);
+    margin-bottom: 4px;
+    letter-spacing: 0.03em;
+  }
+  .service-dur {
+    font-size: 0.72rem;
+    color: var(--clay-dark);
+    opacity: 0.8;
+  }
+  .service-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--bark);
+    margin-top: 8px;
+    font-weight: 500;
+  }
+
+  /* Duration selector */
+  .duration-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .dur-btn {
+    flex: 1;
+    padding: 10px 8px;
+    border: 1.5px solid var(--mist);
+    background: var(--warm-white);
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.78rem;
+    color: var(--stone);
+    transition: all 0.2s;
+    text-align: center;
+  }
+  .dur-btn:hover { border-color: var(--clay); }
+  .dur-btn.selected {
+    background: var(--stone);
+    border-color: var(--stone);
+    color: var(--linen);
+  }
+  .dur-btn .dur-price {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    margin-top: 4px;
+    color: var(--clay);
+  }
+  .dur-btn.selected .dur-price { color: var(--clay-light); }
+
+  /* Step 2 — Date & Time */
+  .calendar-wrap { margin-bottom: 24px; }
+  .cal-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  .cal-nav h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--stone);
+  }
+  .cal-arrow {
+    background: none;
+    border: 1px solid var(--mist);
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--stone);
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .cal-arrow:hover { border-color: var(--clay); background: var(--linen); }
+
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+  }
+  .cal-day-name {
+    text-align: center;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--clay-dark);
+    padding: 6px 0;
+    opacity: 0.7;
+  }
+  .cal-day {
+    text-align: center;
+    padding: 9px 4px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.82rem;
+    transition: all 0.15s;
+    color: var(--stone);
+  }
+  .cal-day:hover:not(.empty):not(.past) { background: var(--clay-light); }
+  .cal-day.today { font-weight: 600; color: var(--clay-dark); }
+  .cal-day.selected { background: var(--stone) !important; color: var(--linen) !important; border-radius: 50%; }
+  .cal-day.past { opacity: 0.3; cursor: default; }
+  .cal-day.empty { cursor: default; }
+  .cal-day.has-slots::after {
+    content: '·';
+    display: block;
+    color: var(--sage);
+    font-size: 1.2rem;
+    line-height: 0;
+    margin-top: 2px;
+  }
+
+  .time-slots {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .time-slot {
+    padding: 10px 4px;
+    border: 1.5px solid var(--mist);
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: var(--warm-white);
+    color: var(--stone);
+  }
+  .time-slot:hover { border-color: var(--clay); background: white; }
+  .time-slot.selected { background: var(--stone); border-color: var(--stone); color: var(--linen); }
+  .time-slot.full { opacity: 0.35; cursor: not-allowed; text-decoration: line-through; }
+
+  /* Step 3 — Guest Info */
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+  .form-group label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--bark);
+    opacity: 0.8;
+    font-weight: 500;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: var(--warm-white);
+    border: 1.5px solid var(--mist);
+    border-radius: 4px;
+    padding: 12px 14px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.88rem;
+    color: var(--stone);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--clay);
+    background: white;
+  }
+
+  .promo-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .promo-row input { flex: 1; }
+  .promo-btn {
+    padding: 12px 20px;
+    background: none;
+    border: 1.5px solid var(--clay);
+    border-radius: 4px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--clay-dark);
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .promo-btn:hover { background: var(--clay); color: white; }
+
+  .member-toggle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: linear-gradient(135deg, rgba(196,168,130,0.12), rgba(125,140,110,0.08));
+    border-radius: 4px;
+    border: 1px solid rgba(196,168,130,0.3);
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+  .member-toggle input[type="checkbox"] {
+    accent-color: var(--clay-dark);
+    width: 16px; height: 16px;
+    cursor: pointer;
+  }
+  .member-toggle-text { font-size: 0.82rem; color: var(--bark); }
+  .member-toggle-text strong { color: var(--clay-dark); }
+
+  /* Step 4 — Confirm */
+  .confirm-summary {
+    background: var(--linen);
+    border-radius: 4px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+  .confirm-summary h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--stone);
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--mist);
+  }
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    font-size: 0.85rem;
+  }
+  .summary-row .key { color: var(--bark); opacity: 0.7; font-size: 0.78rem; letter-spacing: 0.06em; }
+  .summary-row .val { font-weight: 500; color: var(--stone); }
+  .summary-divider { height: 1px; background: var(--mist); margin: 12px 0; }
+  .summary-total .key { font-weight: 600; font-size: 0.82rem; opacity: 1; }
+  .summary-total .val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: var(--clay-dark);
+    font-weight: 400;
+  }
+  .promo-applied {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(125,140,110,0.15);
+    color: var(--sage);
+    font-size: 0.72rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    width: 100%;
+    padding: 16px;
+    background: var(--stone);
+    color: var(--linen);
+    border: none;
+    border-radius: 4px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.25s;
+    font-weight: 500;
+  }
+  .btn-primary:hover {
+    background: var(--bark);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(74,66,56,0.2);
+  }
+
+  .btn-back {
+    background: none;
+    border: none;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--bark);
+    opacity: 0.6;
+    cursor: pointer;
+    padding: 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: opacity 0.2s;
+  }
+  .btn-back:hover { opacity: 1; }
+
+  .btn-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Success */
+  .success-screen {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px 0;
+    animation: fadeIn 0.5s ease;
+  }
+  .success-screen.visible { display: flex; }
+  .success-icon {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--sage-light), var(--clay-light));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 30px rgba(125,140,110,0.25);
+  }
+  .success-screen h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--stone);
+    margin-bottom: 10px;
+  }
+  .success-screen p {
+    font-size: 0.85rem;
+    color: var(--bark);
+    opacity: 0.7;
+    line-height: 1.7;
+    max-width: 280px;
+    margin-bottom: 24px;
+  }
+  .booking-ref {
+    background: var(--linen);
+    border: 1px dashed var(--clay);
+    border-radius: 4px;
+    padding: 16px 32px;
+    margin-bottom: 24px;
+  }
+  .booking-ref .ref-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--clay-dark);
+    margin-bottom: 4px;
+  }
+  .booking-ref .ref-code {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--stone);
+    letter-spacing: 0.1em;
+  }
+
+  /* Services section below fold */
+  .services-section {
+    position: relative;
+    z-index: 1;
+    padding: 80px 48px 100px;
+    background: var(--stone);
+  }
+  .services-section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    color: var(--linen);
+    margin-bottom: 8px;
+  }
+  .services-section h2 em { font-style: italic; color: var(--clay); }
+  .section-sub {
+    font-size: 0.82rem;
+    color: var(--clay-light);
+    opacity: 0.6;
+    letter-spacing: 0.06em;
+    margin-bottom: 52px;
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 2px;
+  }
+  .menu-item {
+    padding: 32px 28px;
+    border: 1px solid rgba(245,240,232,0.07);
+    transition: background 0.3s;
+    cursor: pointer;
+  }
+  .menu-item:hover { background: rgba(196,168,130,0.08); }
+  .menu-item-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
+  .menu-item-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--linen);
+    line-height: 1.2;
+  }
+  .menu-item-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--clay);
+    white-space: nowrap;
+    margin-left: 16px;
+  }
+  .menu-item-desc {
+    font-size: 0.78rem;
+    color: var(--clay-light);
+    opacity: 0.55;
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+  .menu-item-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sage-light);
+    border: 1px solid rgba(181,196,164,0.3);
+    padding: 3px 8px;
+    border-radius: 2px;
+    opacity: 0.8;
+  }
+
+  /* Notification toast */
+  .toast {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background: var(--stone);
+    color: var(--linen);
+    padding: 14px 20px;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    box-shadow: 0 12px 40px rgba(74,66,56,0.25);
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.22,1,0.36,1);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+  .toast-icon { font-size: 1rem; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    header { padding: 16px 20px; }
+    nav { display: none; }
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 100px 20px 40px;
+      gap: 40px;
+    }
+    .services-section { padding: 60px 20px; }
+    .booking-card { order: -1; }
+    .form-row { grid-template-columns: 1fr; }
+    .card-body { padding: 24px; }
+    .time-slots { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="logo">Thaizen <span>Wellness</span></div>
+  <nav>
+    <a href="#">Services</a>
+    <a href="#">About</a>
+    <a href="#">Members</a>
+    <a href="#">Contact</a>
+    <a href="#" class="nav-book">Book Now</a>
+  </nav>
+</header>
+
+<!-- Hero + Booking -->
+<section class="hero">
+  <div class="hero-text">
+    <h1>Restore<br><em>your stillness</em></h1>
+    <p>A sanctuary of authentic Thai and holistic wellness in the heart of George Town, Penang. Let us guide your body back to balance.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="num">8+</span>
+        <span class="label">Treatments</span>
+      </div>
+      <div class="meta-divider"></div>
+      <div class="hero-meta-item">
+        <span class="num">197</span>
+        <span class="label">Jln Magazine</span>
+      </div>
+      <div class="meta-divider"></div>
+      <div class="hero-meta-item">
+        <span class="num">10am</span>
+        <span class="label">Opens Daily</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Booking Card -->
+  <div class="booking-card" id="bookingCard">
+    <div class="card-header">
+      <h2>Book Your Session</h2>
+      <div class="step-indicator">
+        <div class="step-dot active" id="dot0"></div>
+        <div class="step-dot" id="dot1"></div>
+        <div class="step-dot" id="dot2"></div>
+        <div class="step-dot" id="dot3"></div>
+      </div>
+    </div>
+    <div class="card-body" id="cardBody">
+
+      <!-- STEP 1: Service -->
+      <div class="step active" id="step1">
+        <div class="step-label">Step 1 of 4 — Choose Your Treatment</div>
+        <div class="services-grid">
+          <div class="service-card" onclick="selectService(this, 'Thai Massage', 120)" data-service="Thai Massage" data-base="120">
+            <div class="service-icon">🌿</div>
+            <div class="service-name">Thai Massage</div>
+            <div class="service-dur">60–120 min</div>
+            <div class="service-price">From RM 120</div>
+          </div>
+          <div class="service-card" onclick="selectService(this, 'Aromatherapy', 150)" data-service="Aromatherapy" data-base="150">
+            <div class="service-icon">🌸</div>
+            <div class="service-name">Aromatherapy</div>
+            <div class="service-dur">60–90 min</div>
+            <div class="service-price">From RM 150</div>
+          </div>
+          <div class="service-card" onclick="selectService(this, 'Foot Reflexology', 80)" data-service="Foot Reflexology" data-base="80">
+            <div class="service-icon">🦶</div>
+            <div class="service-name">Foot Reflexology</div>
+            <div class="service-dur">45–60 min</div>
+            <div class="service-price">From RM 80</div>
+          </div>
+          <div class="service-card" onclick="selectService(this, 'Body Scrub', 180)" data-service="Body Scrub" data-base="180">
+            <div class="service-icon">✨</div>
+            <div class="service-name">Body Scrub</div>
+            <div class="service-dur">60–90 min</div>
+            <div class="service-price">From RM 180</div>
+          </div>
+          <div class="service-card" onclick="selectService(this, 'Back Massage', 100)" data-service="Back Massage" data-base="100">
+            <div class="service-icon">💆</div>
+            <div class="service-name">Back Massage</div>
+            <div class="service-dur">30–60 min</div>
+            <div class="service-price">From RM 100</div>
+          </div>
+          <div class="service-card" onclick="selectService(this, 'Wellness Package', 320)" data-service="Wellness Package" data-base="320">
+            <div class="service-icon">🏵️</div>
+            <div class="service-name">Wellness Package</div>
+            <div class="service-dur">120–180 min</div>
+            <div class="service-price">From RM 320</div>
+          </div>
+        </div>
+
+        <div class="step-label">Duration</div>
+        <div class="duration-row" id="durationRow">
+          <button class="dur-btn selected" onclick="selectDur(this, 1.0, '60 min')">
+            60 min<span class="dur-price" id="p60">RM –</span>
+          </button>
+          <button class="dur-btn" onclick="selectDur(this, 1.4, '90 min')">
+            90 min<span class="dur-price" id="p90">RM –</span>
+          </button>
+          <button class="dur-btn" onclick="selectDur(this, 1.8, '120 min')">
+            120 min<span class="dur-price" id="p120">RM –</span>
+          </button>
+        </div>
+
+        <button class="btn-primary" onclick="goStep(2)">Continue →</button>
+      </div>
+
+      <!-- STEP 2: Date & Time -->
+      <div class="step" id="step2">
+        <div class="step-label">Step 2 of 4 — Pick Date & Time</div>
+        <div class="calendar-wrap">
+          <div class="cal-nav">
+            <button class="cal-arrow" onclick="changeMonth(-1)">‹</button>
+            <h3 id="calTitle"></h3>
+            <button class="cal-arrow" onclick="changeMonth(1)">›</button>
+          </div>
+          <div class="cal-grid" id="calGrid"></div>
+        </div>
+
+        <div class="step-label" style="margin-top:20px" id="timeLabel">Available Times</div>
+        <div class="time-slots" id="timeSlots"></div>
+
+        <div class="btn-row" style="margin-top:20px">
+          <button class="btn-primary" onclick="goStep(3)">Continue →</button>
+          <button class="btn-back" onclick="goStep(1)">← Back</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Guest Info -->
+      <div class="step" id="step3">
+        <div class="step-label">Step 3 of 4 — Your Details</div>
+
+        <div class="member-toggle" onclick="toggleMember()">
+          <input type="checkbox" id="memberCheck">
+          <div class="member-toggle-text">
+            I'm a <strong>Thaizen Member</strong> — apply my perks & points
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="e.g. Amirah" id="fname">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="e.g. Tan" id="lname">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Mobile Number</label>
+          <input type="tel" placeholder="+60 12 345 6789" id="phone">
+        </div>
+
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="you@example.com" id="email">
+        </div>
+
+        <div class="form-group">
+          <label>Special Requests</label>
+          <textarea placeholder="Pressure preference, areas to focus on, allergies..." rows="3" style="resize:none"></textarea>
+        </div>
+
+        <div class="step-label">Promo Code</div>
+        <div class="promo-row">
+          <div class="form-group" style="margin:0;flex:1">
+            <input type="text" placeholder="Enter code (e.g. THAIZEN20)" id="promoInput" style="text-transform:uppercase">
+          </div>
+          <button class="promo-btn" onclick="applyPromo()">Apply</button>
+        </div>
+        <div id="promoMsg" style="font-size:0.78rem;margin-bottom:16px;min-height:18px;color:var(--sage)"></div>
+
+        <div class="btn-row">
+          <button class="btn-primary" onclick="goStep(4)">Review Booking →</button>
+          <button class="btn-back" onclick="goStep(2)">← Back</button>
+        </div>
+      </div>
+
+      <!-- STEP 4: Confirm -->
+      <div class="step" id="step4">
+        <div class="step-label">Step 4 of 4 — Confirm & Pay</div>
+        <div class="confirm-summary">
+          <h3>Booking Summary</h3>
+          <div class="summary-row">
+            <span class="key">Treatment</span>
+            <span class="val" id="sumService">—</span>
+          </div>
+          <div class="summary-row">
+            <span class="key">Duration</span>
+            <span class="val" id="sumDur">—</span>
+          </div>
+          <div class="summary-row">
+            <span class="key">Date</span>
+            <span class="val" id="sumDate">—</span>
+          </div>
+          <div class="summary-row">
+            <span class="key">Time</span>
+            <span class="val" id="sumTime">—</span>
+          </div>
+          <div class="summary-row">
+            <span class="key">Guest</span>
+            <span class="val" id="sumGuest">—</span>
+          </div>
+          <div class="summary-divider"></div>
+          <div class="summary-row">
+            <span class="key">Subtotal</span>
+            <span class="val" id="sumSubtotal">—</span>
+          </div>
+          <div class="summary-row" id="promoRow" style="display:none">
+            <span class="key">Discount</span>
+            <span class="val" id="sumDiscount" style="color:var(--sage)">—</span>
+          </div>
+          <div class="summary-divider"></div>
+          <div class="summary-row summary-total">
+            <span class="key">Total</span>
+            <span class="val" id="sumTotal">—</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Payment Method</label>
+          <select>
+            <option>Pay at Spa (Walk-in)</option>
+            <option>Online — Credit / Debit Card</option>
+            <option>Online — DuitNow / FPX</option>
+            <option>Online — Touch 'n Go eWallet</option>
+          </select>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn-primary" onclick="confirmBooking()">✦ Confirm Booking</button>
+          <button class="btn-back" onclick="goStep(3)">← Back</button>
+        </div>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="success-screen" id="successScreen">
+        <div class="success-icon">🌿</div>
+        <h2>You're booked!</h2>
+        <p>A confirmation has been sent to your email. We look forward to welcoming you.</p>
+        <div class="booking-ref">
+          <div class="ref-label">Booking Reference</div>
+          <div class="ref-code" id="refCode">TZ-######</div>
+        </div>
+        <button class="btn-primary" style="max-width:220px" onclick="resetBooking()">Book Another →</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Services Menu Section -->
+<section class="services-section">
+  <h2>Our <em>treatments</em></h2>
+  <div class="section-sub">George Town · Penang · Est. 2020</div>
+  <div class="menu-grid">
+    <div class="menu-item">
+      <div class="menu-item-top">
+        <div class="menu-item-name">Traditional<br>Thai Massage</div>
+        <div class="menu-item-price">RM 120–216</div>
+      </div>
+      <div class="menu-item-desc">Ancient stretching techniques combined with acupressure to relieve tension and restore energy flow throughout the body.</div>
+      <div class="menu-item-tags"><span class="tag">60 min</span><span class="tag">90 min</span><span class="tag">120 min</span></div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-top">
+        <div class="menu-item-name">Aromatherapy<br>Body Massage</div>
+        <div class="menu-item-price">RM 150–270</div>
+      </div>
+      <div class="menu-item-desc">Warm essential oils blended to your mood — lavender for calm, eucalyptus for clarity. A sensory journey for the mind and body.</div>
+      <div class="menu-item-tags"><span class="tag">60 min</span><span class="tag">90 min</span></div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-top">
+        <div class="menu-item-name">Foot<br>Reflexology</div>
+        <div class="menu-item-price">RM 80–112</div>
+      </div>
+      <div class="menu-item-desc">Precision pressure on reflex points mapped to your organs and systems. A session that heals from the ground up.</div>
+      <div class="menu-item-tags"><span class="tag">45 min</span><span class="tag">60 min</span></div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-top">
+        <div class="menu-item-name">Sea Salt<br>Body Scrub</div>
+        <div class="menu-item-price">RM 180–252</div>
+      </div>
+      <div class="menu-item-desc">Renew and reveal with our signature sea salt exfoliation, followed by a hydrating botanical wrap that leaves skin radiant.</div>
+      <div class="menu-item-tags"><span class="tag">60 min</span><span class="tag">90 min</span></div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-top">
+        <div class="menu-item-name">Back &amp; Shoulder<br>Massage</div>
+        <div class="menu-item-price">RM 100–180</div>
+      </div>
+      <div class="menu-item-desc">Targeted relief for the most common areas of tension. Deep tissue work to unlock knotted muscles and restore posture.</div>
+      <div class="menu-item-tags"><span class="tag">30 min</span><span class="tag">60 min</span></div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-top">
+        <div class="menu-item-name">Thaizen Wellness<br>Package</div>
+        <div class="menu-item-price">RM 320–576</div>
+      </div>
+      <div class="menu-item-desc">Our signature full-body ritual — foot scrub, aromatherapy massage, reflexology, and hot ginger tea to conclude. The complete journey.</div>
+      <div class="menu-item-tags"><span class="tag">120 min</span><span class="tag">180 min</span><span class="tag">Members save 15%</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Toast -->
+<div class="toast" id="toast">
+  <span class="toast-icon">🌿</span>
+  <span id="toastMsg">Done!</span>
+</div>
+
+<script>
+  // ── State ──
+  let state = {
+    step: 1,
+    service: null,
+    basePrice: 0,
+    durMult: 1.0,
+    durLabel: '60 min',
+    price: 0,
+    selectedDate: null,
+    selectedTime: null,
+    promoDiscount: 0,
+    promoCode: null,
+    calYear: new Date().getFullYear(),
+    calMonth: new Date().getMonth(),
+  };
+
+  const PROMOS = {
+    'THAIZEN20': { type: 'percent', val: 20, label: '20% off' },
+    'WELCOME15': { type: 'percent', val: 15, label: '15% off' },
+    'MEMBER10':  { type: 'fixed',   val: 30, label: 'RM30 off' },
+    'PENANG25':  { type: 'percent', val: 25, label: '25% off' },
+  };
+
+  const TIMES = ['10:00 AM','10:30 AM','11:00 AM','11:30 AM','12:00 PM','12:30 PM',
+                  '2:00 PM','2:30 PM','3:00 PM','3:30 PM','4:00 PM','4:30 PM',
+                  '5:00 PM','5:30 PM','6:00 PM','7:00 PM','8:00 PM'];
+  const FULL_SLOTS = ['11:00 AM','3:30 PM','7:00 PM'];
+
+  // ── Services ──
+  function selectService(el, name, base) {
+    document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    state.service = name;
+    state.basePrice = base;
+    updateDurPrices();
+    showToast(`${name} selected`);
+  }
+
+  function updateDurPrices() {
+    if (!state.basePrice) return;
+    document.getElementById('p60').textContent  = 'RM ' + Math.round(state.basePrice * 1.0);
+    document.getElementById('p90').textContent  = 'RM ' + Math.round(state.basePrice * 1.4);
+    document.getElementById('p120').textContent = 'RM ' + Math.round(state.basePrice * 1.8);
+  }
+
+  function selectDur(el, mult, label) {
+    document.querySelectorAll('.dur-btn').forEach(b => b.classList.remove('selected'));
+    el.classList.add('selected');
+    state.durMult = mult;
+    state.durLabel = label;
+  }
+
+  // ── Steps ──
+  function goStep(n) {
+    if (n === 2 && !state.service) { showToast('Please select a treatment first'); return; }
+    if (n === 3 && (!state.selectedDate || !state.selectedTime)) { showToast('Please choose a date & time'); return; }
+
+    state.step = n;
+    document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+    document.getElementById('step' + n).classList.add('active');
+    updateDots(n);
+
+    if (n === 2) renderCalendar();
+    if (n === 4) populateSummary();
+  }
+
+  function updateDots(n) {
+    for (let i = 0; i < 4; i++) {
+      const d = document.getElementById('dot' + i);
+      d.classList.remove('active','done');
+      if (i + 1 < n) d.classList.add('done');
+      if (i + 1 === n) d.classList.add('active');
+    }
+  }
+
+  // ── Calendar ──
+  function renderCalendar() {
+    const { calYear, calMonth } = state;
+    const months = ['January','February','March','April','May','June',
+                    'July','August','September','October','November','December'];
+    document.getElementById('calTitle').textContent = `${months[calMonth]} ${calYear}`;
+
+    const today = new Date();
+    today.setHours(0,0,0,0);
+    const firstDay = new Date(calYear, calMonth, 1).getDay();
+    const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+
+    const grid = document.getElementById('calGrid');
+    grid.innerHTML = '';
+    ['Su','Mo','Tu','We','Th','Fr','Sa'].forEach(d => {
+      const el = document.createElement('div');
+      el.className = 'cal-day-name'; el.textContent = d;
+      grid.appendChild(el);
+    });
+
+    for (let i = 0; i < firstDay; i++) {
+      const el = document.createElement('div'); el.className = 'cal-day empty'; grid.appendChild(el);
+    }
+
+    for (let d = 1; d <= daysInMonth; d++) {
+      const el = document.createElement('div');
+      el.className = 'cal-day';
+      el.textContent = d;
+      const date = new Date(calYear, calMonth, d);
+      if (date < today) { el.classList.add('past'); }
+      else {
+        if (d % 3 !== 0) el.classList.add('has-slots');
+        const ds = dateStr(calYear, calMonth, d);
+        if (state.selectedDate === ds) el.classList.add('selected');
+        if (date.getTime() === today.getTime()) el.classList.add('today');
+        el.onclick = () => selectDate(calYear, calMonth, d);
+      }
+      grid.appendChild(el);
+    }
+  }
+
+  function dateStr(y, m, d) {
+    return `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+  }
+
+  function selectDate(y, m, d) {
+    state.selectedDate = dateStr(y, m, d);
+    state.selectedTime = null;
+    renderCalendar();
+    renderTimeSlots(y, m, d);
+  }
+
+  function renderTimeSlots(y, m, d) {
+    const date = new Date(y, m, d);
+    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    document.getElementById('timeLabel').textContent = `Times — ${days[date.getDay()]} ${d} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][m]}`;
+
+    const container = document.getElementById('timeSlots');
+    container.innerHTML = '';
+    TIMES.forEach(t => {
+      const el = document.createElement('div');
+      el.className = 'time-slot';
+      el.textContent = t;
+      if (FULL_SLOTS.includes(t)) { el.classList.add('full'); el.title = 'Fully booked'; }
+      else {
+        if (state.selectedTime === t) el.classList.add('selected');
+        el.onclick = () => {
+          document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+          el.classList.add('selected');
+          state.selectedTime = t;
+          showToast(`${t} reserved`);
+        };
+      }
+      container.appendChild(el);
+    });
+  }
+
+  function changeMonth(dir) {
+    state.calMonth += dir;
+    if (state.calMonth < 0) { state.calMonth = 11; state.calYear--; }
+    if (state.calMonth > 11) { state.calMonth = 0; state.calYear++; }
+    renderCalendar();
+  }
+
+  // ── Promo ──
+  function applyPromo() {
+    const code = document.getElementById('promoInput').value.toUpperCase().trim();
+    const msg = document.getElementById('promoMsg');
+    if (PROMOS[code]) {
+      const p = PROMOS[code];
+      state.promoCode = code;
+      state.promoDiscount = p.type === 'percent'
+        ? p.val / 100
+        : p.val; // fixed
+      state.promoType = p.type;
+      msg.style.color = 'var(--sage)';
+      msg.textContent = `✓ Code applied — ${p.label}`;
+      showToast('Promo code applied! 🎉');
+    } else if (code === '') {
+      msg.textContent = '';
+    } else {
+      state.promoCode = null; state.promoDiscount = 0;
+      msg.style.color = '#c0392b';
+      msg.textContent = '✗ Invalid promo code';
+    }
+  }
+
+  function toggleMember() {
+    const cb = document.getElementById('memberCheck');
+    cb.checked = !cb.checked;
+    if (cb.checked) showToast('Member perks applied ✦');
+  }
+
+  // ── Summary ──
+  function populateSummary() {
+    state.price = Math.round(state.basePrice * state.durMult);
+    const fname = document.getElementById('fname').value || '—';
+    const lname = document.getElementById('lname').value || '';
+    const [y, m, d] = (state.selectedDate || '—').split('-');
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const dateFormatted = state.selectedDate ? `${parseInt(d)} ${months[parseInt(m)-1]} ${y}` : '—';
+
+    document.getElementById('sumService').textContent = state.service || '—';
+    document.getElementById('sumDur').textContent = state.durLabel;
+    document.getElementById('sumDate').textContent = dateFormatted;
+    document.getElementById('sumTime').textContent = state.selectedTime || '—';
+    document.getElementById('sumGuest').textContent = `${fname} ${lname}`.trim();
+    document.getElementById('sumSubtotal').textContent = `RM ${state.price}`;
+
+    let discount = 0;
+    if (state.promoCode) {
+      discount = state.promoType === 'percent'
+        ? Math.round(state.price * state.promoDiscount)
+        : state.promoDiscount;
+      document.getElementById('promoRow').style.display = 'flex';
+      document.getElementById('sumDiscount').innerHTML =
+        `−RM ${discount} <span class="promo-applied">🏷 ${state.promoCode}</span>`;
+    } else {
+      document.getElementById('promoRow').style.display = 'none';
+    }
+    document.getElementById('sumTotal').textContent = `RM ${state.price - discount}`;
+  }
+
+  // ── Confirm ──
+  function confirmBooking() {
+    const ref = 'TZ-' + Math.random().toString(36).substring(2,8).toUpperCase();
+    document.getElementById('refCode').textContent = ref;
+    document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+    document.getElementById('successScreen').classList.add('visible');
+    document.querySelectorAll('.step-dot').forEach(d => d.classList.add('done'));
+    showToast('Booking confirmed! 🌿');
+  }
+
+  function resetBooking() {
+    state = {
+      step: 1, service: null, basePrice: 0, durMult: 1.0,
+      durLabel: '60 min', price: 0, selectedDate: null,
+      selectedTime: null, promoDiscount: 0, promoCode: null,
+      calYear: new Date().getFullYear(), calMonth: new Date().getMonth(),
+    };
+    document.getElementById('successScreen').classList.remove('visible');
+    document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected'));
+    document.querySelectorAll('.dur-btn').forEach((b,i) => { b.classList.toggle('selected', i===0); });
+    document.getElementById('fname').value = '';
+    document.getElementById('lname').value = '';
+    document.getElementById('phone').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('promoInput').value = '';
+    document.getElementById('promoMsg').textContent = '';
+    document.getElementById('memberCheck').checked = false;
+    goStep(1);
+    updateDurPrices();
+  }
+
+  // ── Toast ──
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    document.getElementById('toastMsg').textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2800);
+  }
+
+  // ── Init ──
+  renderCalendar();
+</script>
+</body>
+</html>

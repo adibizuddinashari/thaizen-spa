@@ -1110,7 +1110,58 @@ function nextMonth(){S.cm++;if(S.cm>11){S.cm=0;S.cy++;}renderCalendar();}
 function toggleMember(){const cb=document.getElementById('memberCb');cb.checked=!cb.checked;if(cb.checked)toast('Member perks activated ✦','🌿');}
 function applyPromo(){const code=document.getElementById('promoInput').value.toUpperCase().trim();const msg=document.getElementById('promoMsg');if(PROMOS[code]){const p=PROMOS[code];S.promo=code;S.promoDisc=p.val;S.promoType=p.type;msg.className='promo-msg promo-ok';msg.textContent=`✓ Applied — ${p.label}`;toast('Promo code applied! 🎉');}else if(!code){msg.textContent='';S.promo=null;}else{S.promo=null;S.promoDisc=0;msg.className='promo-msg promo-err';msg.textContent='✗ Invalid promo code';}}
 function populateSummary(){const svc=SERVICES[S.cat][S.svcIndex];const [y,m,d]=(S.date||'').split('-');const dateStr=S.date?`${parseInt(d)} ${MSHORT[parseInt(m)-1]} ${y}`:'—';const fname=document.getElementById('fname').value||'';const lname=document.getElementById('lname').value||'';const guest=`${fname} ${lname}`.trim()||'—';document.getElementById('sumSvc').textContent=svc?.name||'—';document.getElementById('sumDur').textContent=S.durLabel||'—';document.getElementById('sumDate').textContent=dateStr;document.getElementById('sumTime').textContent=S.time||'—';document.getElementById('sumGuest').textContent=guest;document.getElementById('sumPay').textContent=document.getElementById('payment').value;document.getElementById('sumSub').textContent=`RM ${S.price}`;let disc=0;if(S.promo){disc=S.promoType==='pct'?Math.round(S.price*S.promoDisc/100):S.promoDisc;document.getElementById('discRow').style.display='flex';document.getElementById('sumDisc').innerHTML=`−RM ${disc} <span class="discount-tag">🏷 ${S.promo}</span>`;}else{document.getElementById('discRow').style.display='none';}document.getElementById('sumTotal').textContent=`RM ${S.price-disc}`;}
-function confirmBooking(){const ref='TZ-'+Math.random().toString(36).substring(2,8).toUpperCase();document.getElementById('refCode').textContent=ref;document.querySelectorAll('.form-step').forEach(s=>s.classList.remove('active'));document.getElementById('successPanel').classList.add('show');for(let i=0;i<4;i++)document.getElementById('pip'+i).classList.add('done');toast('Booking confirmed! See you soon 🪷');}
+function confirmBooking(){
+  const ref='TZ-'+Math.random().toString(36).substring(2,8).toUpperCase();
+  document.getElementById('refCode').textContent=ref;
+
+  // Build WhatsApp message with booking details
+  const svc = document.getElementById('sumSvc').textContent;
+  const dur = document.getElementById('sumDur').textContent;
+  const date = document.getElementById('sumDate').textContent;
+  const time = document.getElementById('sumTime').textContent;
+  const guest = document.getElementById('sumGuest').textContent;
+  const pay = document.getElementById('sumPay').textContent;
+  const total = document.getElementById('sumTotal').textContent;
+
+  const msg = [
+    '*New Booking — Thaizen Spa*',
+    '',
+    `Ref: ${ref}`,
+    `Treatment: ${svc}`,
+    `Duration: ${dur}`,
+    `Date: ${date}`,
+    `Time: ${time}`,
+    `Guest: ${guest}`,
+    `Payment: ${pay}`,
+    `Total: ${total}`,
+    '',
+    'Please reply to confirm the appointment.'
+  ].join('\n');
+
+  const waUrl = 'https://wa.me/60109737017?text=' + encodeURIComponent(msg);
+  window.open(waUrl, '_blank');
+
+  // Save to Google Sheets + send email
+  fetch('https://script.google.com/macros/s/AKfycbzEBL11f0G80d8mPvexr9DNehD7sczLl6yPEcDtkLr8gE1stBYFWCbGTWsoHGqYw3ES7g/exec', {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify({
+      ref: ref,
+      treatment: svc,
+      duration: dur,
+      date: date,
+      time: time,
+      guest: guest,
+      payment: pay,
+      total: total
+    })
+  }).catch(function(){});
+
+  // Show success screen
+  document.querySelectorAll('.form-step').forEach(s=>s.classList.remove('active'));
+  document.getElementById('successPanel').classList.add('show');
+  for(let i=0;i<4;i++)document.getElementById('pip'+i).classList.add('done');toast('Booking confirmed! See you soon 🪷');}
 function resetAll(){S={step:1,cat:'basic',svcIndex:null,durLabel:null,price:0,date:null,time:null,promo:null,promoDisc:0,promoType:null,cy:new Date().getFullYear(),cm:new Date().getMonth()};document.getElementById('successPanel').classList.remove('show');['fname','lname','phone','email','notes','promoInput'].forEach(id=>document.getElementById(id).value='');document.getElementById('promoMsg').textContent='';document.getElementById('memberCb').checked=false;document.querySelectorAll('.cat-tab').forEach((t,i)=>t.classList.toggle('active',i===0));toStep(1);renderServices();renderDurs();}
 function showMenuTab(el,id){document.querySelectorAll('.menu-tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.menu-panel').forEach(p=>p.classList.remove('active'));el.classList.add('active');document.getElementById(id).classList.add('active');}
 function toast(msg,icon='🪷'){document.getElementById('toastMsg').textContent=msg;document.getElementById('toastIcon').textContent=icon;const t=document.getElementById('toast');t.classList.add('show');clearTimeout(t._to);t._to=setTimeout(()=>t.classList.remove('show'),3000);}

@@ -1379,167 +1379,45 @@ renderDurs();
 renderCalendar();
 
 
-// ── AMBIENT SOUND ENGINE — Luxury Edition ──
+// ── AMBIENT SOUND ENGINE — Audio File ──
 (function() {
-  var ctx = null, masterGain = null, reverb = null, sources = [], playing = false, btn;
+  var audio = null, playing = false, btn;
 
   function initAudio() {
-    if (ctx) return;
-    ctx = new (window.AudioContext || window.webkitAudioContext)();
-    masterGain = ctx.createGain();
-    masterGain.gain.setValueAtTime(0, ctx.currentTime);
-    // Convolution reverb simulation via delay feedback network
-    reverb = createReverb();
-    masterGain.connect(reverb.input);
-    reverb.output.connect(ctx.destination);
-    masterGain.connect(ctx.destination); // dry signal
+    if (audio) return;
+    audio = new Audio('audio/Nautical%20Twilight.mp4');
+    audio.loop = true;
+    audio.volume = 0;
   }
 
-  function createReverb() {
-    // Simple Schroeder reverb: 4 comb filters + 2 allpass
-    var input = ctx.createGain(); input.gain.value = 1;
-    var wet = ctx.createGain(); wet.gain.value = 0.38;
-    var combTimes = [0.0297, 0.0371, 0.0411, 0.0437];
-    combTimes.forEach(function(t) {
-      var delay = ctx.createDelay(1); delay.delayTime.value = t;
-      var fb = ctx.createGain(); fb.gain.value = 0.82;
-      delay.connect(fb); fb.connect(delay);
-      input.connect(delay); delay.connect(wet);
-    });
-    var ap1 = ctx.createDelay(1); ap1.delayTime.value = 0.005;
-    var ap2 = ctx.createDelay(1); ap2.delayTime.value = 0.0017;
-    wet.connect(ap1); ap1.connect(ap2); ap2.connect(ctx.destination);
-    return { input: input, output: ap2 };
-  }
-
-  function osc(freq, type, gainVal, detuneCents) {
-    var o = ctx.createOscillator();
-    var g = ctx.createGain();
-    o.type = type || 'sine';
-    o.frequency.value = freq;
-    if (detuneCents) o.detune.value = detuneCents;
-    g.gain.value = gainVal;
-    o.connect(g); g.connect(masterGain);
-    o.start();
-    sources.push(o);
-    return { osc: o, gain: g };
-  }
-
-  function lfo(target, rate, depth, type) {
-    var l = ctx.createOscillator();
-    var lg = ctx.createGain();
-    l.type = type || 'sine';
-    l.frequency.value = rate;
-    lg.gain.value = depth;
-    l.connect(lg); lg.connect(target);
-    l.start();
-    sources.push(l);
-  }
-
-  // Plucked string / piano tone: short burst oscillator with exponential decay
-  function chime(freq, delay, vol) {
-    setTimeout(function() {
-      if (!playing) return;
-      var o = ctx.createOscillator();
-      var g = ctx.createGain();
-      o.type = 'sine';
-      o.frequency.value = freq;
-      g.gain.setValueAtTime(0, ctx.currentTime);
-      g.gain.linearRampToValueAtTime(vol * 0.7, ctx.currentTime + 0.015);
-      g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 4.5);
-      o.connect(g); g.connect(masterGain);
-      o.start(ctx.currentTime);
-      o.stop(ctx.currentTime + 5);
-    }, delay);
-  }
-
-  // Repeating gentle chime sequence — pentatonic luxury tones (Fmaj7 voicing)
-  var chimeInterval = null;
-  var chimeSets = [
-    // Fmaj7: F3 A3 C4 E4 — warm, open, sophisticated
-    [174.6, 220.0, 261.6, 329.6, 523.2],
-    // Cmaj9: C3 E3 G3 B3 D4
-    [130.8, 164.8, 196.0, 246.9, 293.7],
-    // Amaj7: A2 C#3 E3 G#3
-    [110.0, 138.6, 164.8, 207.7, 440.0],
-  ];
-  var chimeSetIdx = 0;
-
-  function playChimeSet() {
-    if (!playing) return;
-    var set = chimeSets[chimeSetIdx % chimeSets.length];
-    chimeSetIdx++;
-    // Play 3-4 notes from the set with slight time offsets
-    var picks = [0, 2, 3, 4];
-    picks.forEach(function(ni, i) {
-      chime(set[ni], i * 900 + Math.random() * 300, 0.22 - i * 0.03);
-    });
-  }
-
-  function createSilkNoise(vol) {
-    var buf = ctx.createBuffer(1, ctx.sampleRate * 6, ctx.sampleRate);
-    var d = buf.getChannelData(0);
-    var b = [0,0,0,0,0,0,0];
-    for (var i = 0; i < d.length; i++) {
-      var w = Math.random() * 2 - 1;
-      b[0] = 0.99886*b[0] + w*0.0555179; b[1] = 0.99332*b[1] + w*0.0750759;
-      b[2] = 0.96900*b[2] + w*0.1538520; b[3] = 0.86650*b[3] + w*0.3104856;
-      b[4] = 0.55000*b[4] + w*0.5329522; b[5] = -0.7616*b[5] - w*0.0168980;
-      d[i] = (b[0]+b[1]+b[2]+b[3]+b[4]+b[5]+b[6]+w*0.5362)*0.11;
-      b[6] = w * 0.115926;
-    }
-    var src = ctx.createBufferSource(); src.buffer = buf; src.loop = true;
-    var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 260; lp.Q.value = 0.4;
-    var g = ctx.createGain(); g.gain.value = vol;
-    src.connect(lp); lp.connect(g); g.connect(masterGain);
-    src.start(); sources.push(src);
+  function fadeVolume(from, to, durationMs) {
+    var steps = 60;
+    var interval = durationMs / steps;
+    var step = (to - from) / steps;
+    var current = from;
+    audio.volume = from;
+    var timer = setInterval(function() {
+      current += step;
+      audio.volume = Math.min(1, Math.max(0, current));
+      if ((step > 0 && current >= to) || (step < 0 && current <= to)) {
+        audio.volume = to;
+        clearInterval(timer);
+        if (to === 0) { audio.pause(); audio.currentTime = 0; }
+      }
+    }, interval);
   }
 
   function startAmbience() {
     initAudio();
-    if (ctx.state === 'suspended') ctx.resume();
-
-    // Deep foundation drones — Fmaj7 voicing (F1, C2, E2, A2)
-    var d1 = osc(43.65, 'sine', 0.30);       // F1
-    var d2 = osc(65.41, 'sine', 0.18);       // C2
-    var d3 = osc(82.41, 'sine', 0.12);       // E2
-    var d4 = osc(110.0, 'sine', 0.08);       // A2
-
-    // Warm pads — slightly detuned for shimmer
-    osc(174.61, 'triangle', 0.07);            // F3
-    osc(174.41, 'triangle', 0.05, -8);        // F3 slightly flat
-    osc(261.63, 'triangle', 0.045);           // C4
-    osc(329.63, 'triangle', 0.032);           // E4
-
-    // Very slow LFOs for organic drift
-    lfo(d1.osc.detune, 0.05, 4);
-    lfo(d2.osc.detune, 0.07, 3);
-    lfo(d3.osc.detune, 0.09, 2.5);
-
-    // Silk noise bed
-    createSilkNoise(0.012);
-
-    // Periodic chime tones
-    chimeInterval = setInterval(playChimeSet, 14000);
-    setTimeout(playChimeSet, 2200); // first set after 2.2s
-
-    // Smooth fade-in
-    masterGain.gain.cancelScheduledValues(ctx.currentTime);
-    masterGain.gain.setValueAtTime(0, ctx.currentTime);
-    masterGain.gain.linearRampToValueAtTime(0.48, ctx.currentTime + 4.0);
-    playing = true;
+    audio.play().then(function() {
+      fadeVolume(0, 0.55, 4000);
+      playing = true;
+    }).catch(function() {});
   }
 
   function stopAmbience() {
-    if (!masterGain) return;
-    clearInterval(chimeInterval);
-    masterGain.gain.cancelScheduledValues(ctx.currentTime);
-    masterGain.gain.setValueAtTime(masterGain.gain.value, ctx.currentTime);
-    masterGain.gain.linearRampToValueAtTime(0, ctx.currentTime + 2.0);
-    setTimeout(function() {
-      sources.forEach(function(s) { try { s.stop(); } catch(e){} });
-      sources = []; playing = false;
-    }, 2100);
+    fadeVolume(audio.volume, 0, 2000);
+    playing = false;
   }
 
   function toggle() {
@@ -1556,9 +1434,6 @@ renderCalendar();
   }
 
   window._thaizeSoundToggle = toggle;
-  window._thaizeSoundStart = startAmbience;
-
-  // Update button state to playing after auto-start
   window._thaizeSoundAutoStarted = function() {
     btn = btn || document.getElementById('soundToggleBtn');
     if (btn && !playing) {

@@ -10,15 +10,16 @@
 
 ## Local Server
 - **Always serve on localhost** — never screenshot a `file:///` URL.
-- Start the dev server: `node serve.mjs` (serves the project root at `http://localhost:3000`)
-- `serve.mjs` lives in the project root. Start it in the background before taking any screenshots.
-- If the server is already running, do not start a second instance.
+- Start the dev server: `python3 /tmp/serve.py > /tmp/httpserver.log 2>&1 &` (serves the project root at `http://localhost:8080`)
+- `/tmp/serve.py` uses glob to resolve the emoji path dynamically — see MEMORY.md for the full script.
+- Check if already running: `lsof -ti:8080` — do not start a second instance.
+- Stop the server: `kill $(lsof -ti:8080)`
 
 ## Screenshot Workflow
 - Puppeteer is installed at `C:/Users/nateh/AppData/Local/Temp/puppeteer-test/`. Chrome cache is at `C:/Users/nateh/.cache/puppeteer/`.
-- **Always screenshot from localhost:** `node screenshot.mjs http://localhost:3000`
+- **Always screenshot from localhost:** `node screenshot.mjs http://localhost:8080`
 - Screenshots are saved automatically to `./temporary screenshots/screenshot-N.png` (auto-incremented, never overwritten).
-- Optional label suffix: `node screenshot.mjs http://localhost:3000 label` → saves as `screenshot-N-label.png`
+- Optional label suffix: `node screenshot.mjs http://localhost:8080 label` → saves as `screenshot-N-label.png`
 - `screenshot.mjs` lives in the project root. Use it as-is.
 - After screenshotting, read the PNG from `temporary screenshots/` with the Read tool — Claude can see and analyze the image directly.
 - When comparing, be specific: "heading is 32px but reference shows ~24px", "card gap is 16px but should be 24px"

@@ -401,18 +401,33 @@ header.scrolled .hamburger { color:var(--stone); }
   font-size:0.88rem; line-height:1.9; color:var(--bark);
   max-width:520px; margin:0 auto; font-weight:300; opacity:0.85;
 }
-.calendar-wrap {
-  width: 100%;
-  border-radius: 6px;
-  overflow: hidden;
-  box-shadow: 0 4px 40px rgba(0,0,0,0.1), 0 1px 8px rgba(184,144,42,0.08);
-  border: 1px solid rgba(184,144,42,0.15);
+.booking-steps {
+  display: flex; align-items: flex-start;
+  gap: 0; width: 100%; max-width: 720px;
 }
-.calendar-wrap iframe {
-  display: block;
-  width: 100%;
-  height: 540px;
-  border: none;
+.booking-step {
+  flex: 1; text-align: center; padding: 0 32px;
+  position: relative;
+}
+.booking-step + .booking-step::before {
+  content: ''; position: absolute; left: 0; top: 16px;
+  width: 1px; height: 40px;
+  background: rgba(184,144,42,0.25);
+}
+.booking-step-num {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem; letter-spacing: 0.22em;
+  color: var(--gold); margin-bottom: 14px;
+  text-transform: uppercase;
+}
+.booking-step-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem; font-weight: 500; color: var(--stone);
+  margin-bottom: 10px;
+}
+.booking-step-body {
+  font-size: 0.9rem; line-height: 1.85; color: var(--bark);
+  opacity: 0.85; font-weight: 300;
 }
 .booking-cta-block {
   display: flex; flex-direction: column; align-items: center;
@@ -443,7 +458,9 @@ header.scrolled .hamburger { color:var(--stone); }
 }
 @media(max-width:768px) {
   .booking-section { padding: 72px 24px; }
-  .calendar-wrap iframe { height: 420px; }
+  .booking-steps { flex-direction: column; gap: 32px; }
+  .booking-step + .booking-step::before { display: none; }
+  .booking-step { padding: 0; }
 }
 
 /* ══ MENU SECTION ══ */
@@ -848,23 +865,29 @@ footer {
     <div class="booking-heading">
       <div class="booking-eyebrow">Reserve Your Visit</div>
       <h2>Book Your <em>Session</em></h2>
-      <p>Check the calendar below for available slots, then reach out to us on WhatsApp to confirm your booking. Walk-ins are always welcome too.</p>
+      <p>Simply message us on WhatsApp with your preferred treatment and time — we'll get back to you to confirm your slot.</p>
     </div>
 
-    <div class="calendar-wrap">
-      <!-- ▼ Replace the src URL below with your Google Calendar embed link.
-           In Google Calendar: Settings → [Your calendar] → Integrate calendar → Embed code.
-           Make sure the calendar is set to Public before copying the link. -->
-      <iframe
-        src="https://calendar.google.com/calendar/embed?src=general-pg%40jump.com.my&ctz=Asia%2FKuala_Lumpur&mode=MONTH&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=0&showCalendars=0&showTz=0&bgcolor=%23f9f5ef"
-        frameborder="0"
-        scrolling="no"
-        title="ThaiZen Spa — Availability Calendar">
-      </iframe>
+    <div class="booking-steps">
+      <div class="booking-step">
+        <div class="booking-step-num">Step I</div>
+        <div class="booking-step-title">Message Us</div>
+        <div class="booking-step-body">Tap the WhatsApp button below to start a conversation with us directly.</div>
+      </div>
+      <div class="booking-step">
+        <div class="booking-step-num">Step II</div>
+        <div class="booking-step-title">Share Your Preferences</div>
+        <div class="booking-step-body">Tell us your preferred treatment, date, and time — we'll work around your schedule.</div>
+      </div>
+      <div class="booking-step">
+        <div class="booking-step-num">Step III</div>
+        <div class="booking-step-title">We Confirm</div>
+        <div class="booking-step-body">We'll reply to lock in your slot. It's that simple — no forms, no fuss.</div>
+      </div>
     </div>
 
     <div class="booking-cta-block">
-      <p class="booking-cta-note">Seen a time that works? Tap below and we'll get back to you to confirm.</p>
+      <p class="booking-cta-note">Ready to book? Tap below — we'll take it from there.</p>
       <a class="wa-btn"
          href="https://wa.me/60136949949?text=Hi%2C+I%27d+like+to+make+a+booking+at+ThaiZen+Spa.%0A%0AName%3A+%0ATreatment%3A+%0APreferred+Date+%26+Time%3A+%0APhone%3A+"
          target="_blank" rel="noopener">

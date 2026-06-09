@@ -593,17 +593,47 @@ header.scrolled .hamburger { color:var(--stone); }
 .member-title { font-family:'Cormorant Garamond',serif; font-size:clamp(1.8rem,3vw,2.6rem); font-weight:300; color:var(--warm-white); margin-bottom:36px; line-height:1.1; }
 .member-title em { font-style:italic; color:var(--gold); }
 .member-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:32px; }
-.member-card { display:flex; flex-direction:column; align-items:center; gap:8px; padding:20px 12px; border:1px solid rgba(184,144,42,0.15); border-radius:4px; background:rgba(255,255,255,0.02); transition:all 0.25s; }
-.member-card:hover { background:rgba(184,144,42,0.07); border-color:rgba(184,144,42,0.4); }
-.member-card--featured { border-color:rgba(212,175,106,0.45); background:rgba(184,144,42,0.06); }
-.member-badge { width:110px; height:auto; }
-.member-tier { font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--sage-light); }
-.member-price { font-family:'Cormorant Garamond',serif; font-size:1.7rem; color:var(--gold-pale); line-height:1; }
-.member-rm { font-size:0.9rem; vertical-align:super; margin-right:2px; color:var(--gold-light); }
-.member-topup-label { font-size:0.58rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(253,249,243,0.45); margin-top:4px; }
-.member-free { font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold-light); margin-top:2px; }
-.member-free strong { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:400; }
-.member-carpark { margin-top:8px; background:rgba(184,144,42,0.2); border:1px solid rgba(184,144,42,0.45); border-radius:3px; padding:5px 10px; font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold-light); text-align:center; line-height:1.5; }
+/* Flip cards */
+.member-card { perspective:1000px; height:265px; cursor:pointer; }
+.member-card-inner { position:relative; width:100%; height:100%; transition:transform 0.72s cubic-bezier(0.4,0,0.2,1); transform-style:preserve-3d; }
+.member-card:hover .member-card-inner,
+.member-card.is-flipped .member-card-inner { transform:rotateY(180deg); }
+.member-card-front,
+.member-card-back { position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; border-radius:8px; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.member-card-front { background:rgba(255,255,255,0.02); border:1px solid rgba(184,144,42,0.18); padding:14px 0; gap:8px; transition:box-shadow 0.4s; }
+.member-card:hover .member-card-front { box-shadow:0 0 36px rgba(184,144,42,0.14); }
+.member-card-back { transform:rotateY(180deg); padding:24px 18px; gap:5px; }
+.member-badge { width:80%; max-height:82%; object-fit:contain; filter:drop-shadow(0 6px 18px rgba(0,0,0,0.5)); }
+.member-card-hint { font-size:0.44rem; letter-spacing:0.28em; text-transform:uppercase; color:rgba(253,249,243,0.18); }
+/* Silver */
+.member-card--silver .member-card-front { border-color:rgba(165,170,200,0.22); }
+.member-card--silver .member-card-back { background:linear-gradient(148deg,#1e1e2c 0%,#131320 100%); border:1px solid rgba(165,170,205,0.32); }
+/* Gold */
+.member-card--gold .member-card-front { border-color:rgba(212,175,106,0.38); background:rgba(184,144,42,0.04); }
+.member-card--gold .member-card-back { background:linear-gradient(148deg,#261d07 0%,#160f00 100%); border:1px solid rgba(212,175,106,0.48); }
+/* Platinum */
+.member-card--platinum .member-card-front { border-color:rgba(130,170,220,0.22); }
+.member-card--platinum .member-card-back { background:linear-gradient(148deg,#14203a 0%,#0b1220 100%); border:1px solid rgba(130,175,225,0.36); }
+/* Back content */
+.member-back-tier { font-size:0.54rem; letter-spacing:0.38em; text-transform:uppercase; color:rgba(253,249,243,0.32); }
+.member-back-ornament { font-size:0.52rem; letter-spacing:0.12em; color:rgba(184,144,42,0.45); margin:3px 0 6px; }
+.member-back-topup-lbl { font-size:0.5rem; letter-spacing:0.22em; text-transform:uppercase; color:rgba(253,249,243,0.3); }
+.member-back-topup-val { font-family:'Cormorant Garamond',serif; font-size:2rem; color:var(--gold-pale); line-height:1; }
+.member-back-rm { font-size:0.72rem; vertical-align:super; margin-right:2px; }
+.member-back-sep { width:38px; height:1px; background:rgba(184,144,42,0.22); margin:8px 0; }
+.member-back-free-lbl { font-size:0.5rem; letter-spacing:0.22em; text-transform:uppercase; }
+.member-back-free-val { font-family:'Cormorant Garamond',serif; font-size:1.55rem; line-height:1; }
+.member-card--silver .member-back-free-lbl,
+.member-card--silver .member-back-free-val,
+.member-card--silver .member-back-rm { color:#b8bdd8; }
+.member-card--gold .member-back-free-lbl,
+.member-card--gold .member-back-free-val,
+.member-card--gold .member-back-rm { color:var(--gold-light); }
+.member-card--platinum .member-back-free-lbl,
+.member-card--platinum .member-back-free-val,
+.member-card--platinum .member-back-rm { color:#8ab8ea; }
+.member-back-topup-val .member-back-rm { color:var(--gold-light); }
+.member-back-carpark { margin-top:10px; border:1px solid rgba(130,175,225,0.38); border-radius:3px; padding:5px 11px; font-size:0.47rem; letter-spacing:0.14em; text-transform:uppercase; color:rgba(130,175,225,0.82); text-align:center; line-height:1.65; background:rgba(130,175,225,0.07); }
 .member-parking-note { border-top:1px solid rgba(184,144,42,0.18); padding-top:20px; font-size:0.75rem; color:rgba(253,249,243,0.55); text-align:center; line-height:1.7; font-style:italic; }
 .member-parking-note strong { color:var(--gold-light); font-style:normal; font-weight:500; }
 @media(max-width:860px){ .member-section { grid-template-columns:1fr; } .member-img { min-height:280px; } .member-content { padding:40px 28px; } }
@@ -628,6 +658,13 @@ header.scrolled .hamburger { color:var(--stone); }
 .voucher-gift-name { font-size:0.78rem; color:var(--gold-pale); text-align:center; line-height:1.5; }
 .voucher-gift-qty { font-size:0.6rem; color:var(--sage-light); letter-spacing:0.12em; border:1px solid rgba(175,192,154,0.3); padding:3px 14px; border-radius:20px; }
 .voucher-tnc { font-size:0.6rem; color:rgba(253,249,243,0.25); font-style:italic; }
+.voucher-gv-icon { font-size:1.4rem; color:var(--gold); opacity:0.55; margin-bottom:20px; letter-spacing:0.3em; }
+.voucher-gv-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2.4rem,5vw,4rem); font-weight:300; color:var(--warm-white); line-height:1.1; margin-bottom:24px; }
+.voucher-gv-title em { font-style:italic; color:var(--gold); }
+.voucher-gv-title span { font-size:0.6em; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold-light); display:block; margin-top:6px; font-family:'Montserrat',sans-serif; font-weight:300; }
+.voucher-gv-body { font-size:clamp(0.85rem,1.8vw,1rem); color:rgba(253,249,243,0.5); line-height:1.85; margin-bottom:36px; letter-spacing:0.02em; }
+.voucher-gv-cta { display:inline-block; padding:14px 36px; background:transparent; border:1px solid var(--gold-light); color:var(--gold-light); font-size:0.65rem; letter-spacing:0.28em; text-transform:uppercase; text-decoration:none; border-radius:2px; transition:background 0.3s, color 0.3s; margin-bottom:28px; }
+.voucher-gv-cta:hover { background:var(--gold-light); color:var(--stone); }
 @media(max-width:640px){ .voucher-section { padding:60px 24px; } .voucher-gifts { grid-template-columns:1fr; } .voucher-headline { gap:10px; } }
 .other-price { font-family:'Cormorant Garamond',serif; font-size:1.05rem; color:var(--gold); }
 .sst-notice {
@@ -734,6 +771,11 @@ footer {
   .footer-links { flex-direction: column; gap: 20px; }
   .menu-tabs { overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
   .menu-tabs::-webkit-scrollbar { display: none; }
+  .menu-tabs-wrapper { position:relative; overflow:hidden; }
+  .menu-tabs-wrapper::after { content:''; position:absolute; top:0; right:0; width:64px; height:100%; background:linear-gradient(to right, transparent, var(--dark-bg) 80%); pointer-events:none; transition:opacity 0.35s; }
+  .menu-tabs-wrapper.tabs-end::after { opacity:0; }
+  .tabs-scroll-hint { position:absolute; top:50%; right:6px; transform:translateY(-50%); color:var(--gold-light); font-size:1rem; pointer-events:none; transition:opacity 0.35s; line-height:1; z-index:1; }
+  .menu-tabs-wrapper.tabs-end .tabs-scroll-hint { opacity:0; }
   .time-grid { grid-template-columns: 1fr 1fr; }
   .sst-notice { flex-direction: column; gap: 6px; }
 }
@@ -988,12 +1030,15 @@ footer {
   <div class="section-eyebrow">Our Treatments</div>
   <h2 class="section-title">The Thaizen <em>Menu</em></h2>
   <p class="section-note">All prices inclusive of 8% SST · 所有价格已包含8% SST</p>
-  <div class="menu-tabs">
-    <button class="menu-tab active" onclick="showMenuTab(this,'tab-basic')">Basic Harmony 基本局部护理</button>
-    <button class="menu-tab" onclick="showMenuTab(this,'tab-special')">Special Treatment 特别护理</button>
-    <button class="menu-tab" onclick="showMenuTab(this,'tab-pkg')">Packages 附加配套</button>
-    <button class="menu-tab" onclick="showMenuTab(this,'tab-other')">Other Treatments 其它护理</button>
-    <button class="menu-tab" onclick="showMenuTab(this,'tab-spa')">Spa 水疗</button>
+  <div class="menu-tabs-wrapper">
+    <div class="menu-tabs">
+      <button class="menu-tab active" onclick="showMenuTab(this,'tab-basic')">Basic Harmony 基本局部护理</button>
+      <button class="menu-tab" onclick="showMenuTab(this,'tab-special')">Special Treatment 特别护理</button>
+      <button class="menu-tab" onclick="showMenuTab(this,'tab-pkg')">Packages 附加配套</button>
+      <button class="menu-tab" onclick="showMenuTab(this,'tab-other')">Other Treatments 其它护理</button>
+      <button class="menu-tab" onclick="showMenuTab(this,'tab-spa')">Spa 水疗</button>
+    </div>
+    <span class="tabs-scroll-hint" aria-hidden="true">›</span>
   </div>
   <div class="menu-panel active" id="tab-basic">
     <div class="menu-grid-basic">
@@ -1095,24 +1140,60 @@ footer {
     <div class="member-eyebrow">✦ Join Us ✦</div>
     <h2 class="member-title">Membership <em>Package</em></h2>
     <div class="member-grid">
-      <div class="member-card">
-        <img src="assets/Silver member@2x.png" alt="Silver Member" class="member-badge">
-        <div class="member-topup-label">Top Up</div>
-        <div class="member-price"><span class="member-rm">RM</span>1,000</div>
-        <div class="member-free">Free &nbsp;<strong>RM100</strong></div>
+      <!-- Silver -->
+      <div class="member-card member-card--silver">
+        <div class="member-card-inner">
+          <div class="member-card-front">
+            <img src="assets/Silver member@2x.png" alt="Silver Member" class="member-badge">
+            <div class="member-card-hint">✦ hover to reveal ✦</div>
+          </div>
+          <div class="member-card-back">
+            <div class="member-back-tier">Silver</div>
+            <div class="member-back-ornament">── ✦ ──</div>
+            <div class="member-back-topup-lbl">Top Up</div>
+            <div class="member-back-topup-val"><span class="member-back-rm">RM</span>1,000</div>
+            <div class="member-back-sep"></div>
+            <div class="member-back-free-lbl">Free</div>
+            <div class="member-back-free-val"><span class="member-back-rm">RM</span>100</div>
+          </div>
+        </div>
       </div>
-      <div class="member-card member-card--featured">
-        <img src="assets/Gold Member@2x.png" alt="Gold Member" class="member-badge">
-        <div class="member-topup-label">Top Up</div>
-        <div class="member-price"><span class="member-rm">RM</span>2,000</div>
-        <div class="member-free">Free &nbsp;<strong>RM300</strong></div>
+      <!-- Gold -->
+      <div class="member-card member-card--gold">
+        <div class="member-card-inner">
+          <div class="member-card-front">
+            <img src="assets/Gold Member@2x.png" alt="Gold Member" class="member-badge">
+            <div class="member-card-hint">✦ hover to reveal ✦</div>
+          </div>
+          <div class="member-card-back">
+            <div class="member-back-tier">Gold</div>
+            <div class="member-back-ornament">── ✦ ──</div>
+            <div class="member-back-topup-lbl">Top Up</div>
+            <div class="member-back-topup-val"><span class="member-back-rm">RM</span>2,000</div>
+            <div class="member-back-sep"></div>
+            <div class="member-back-free-lbl">Free</div>
+            <div class="member-back-free-val"><span class="member-back-rm">RM</span>300</div>
+          </div>
+        </div>
       </div>
-      <div class="member-card">
-        <img src="assets/Platinum member@2x.png" alt="Platinum Member" class="member-badge">
-        <div class="member-topup-label">Top Up</div>
-        <div class="member-price"><span class="member-rm">RM</span>3,000</div>
-        <div class="member-free">Free &nbsp;<strong>RM500</strong></div>
-        <div class="member-carpark">Free Carpark<br>Maximum 1 car per visit</div>
+      <!-- Platinum -->
+      <div class="member-card member-card--platinum">
+        <div class="member-card-inner">
+          <div class="member-card-front">
+            <img src="assets/Platinum member@2x.png" alt="Platinum Member" class="member-badge">
+            <div class="member-card-hint">✦ hover to reveal ✦</div>
+          </div>
+          <div class="member-card-back">
+            <div class="member-back-tier">Platinum</div>
+            <div class="member-back-ornament">── ✦ ──</div>
+            <div class="member-back-topup-lbl">Top Up</div>
+            <div class="member-back-topup-val"><span class="member-back-rm">RM</span>3,000</div>
+            <div class="member-back-sep"></div>
+            <div class="member-back-free-lbl">Free</div>
+            <div class="member-back-free-val"><span class="member-back-rm">RM</span>500</div>
+            <div class="member-back-carpark">✦ Free Carpark<br>Maximum 1 car per visit</div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="member-parking-note">
@@ -1127,31 +1208,11 @@ footer {
 <section class="voucher-section" id="voucher">
   <div class="voucher-inner">
     <div class="voucher-eyebrow">Exclusive Wellness Privilege</div>
-    <div class="voucher-headline">
-      <span class="voucher-tag">Purchase</span>
-      <div class="voucher-amount"><sup>RM</sup>500</div>
-      <span class="voucher-tag">Voucher</span>
-    </div>
-    <p class="voucher-subtext">To enjoy the luxury worth <strong>RM 699</strong> of treatments</p>
-    <div class="voucher-divider">Complimentary Gifts Included</div>
-    <div class="voucher-gifts">
-      <div class="voucher-gift">
-        <div class="voucher-gift-icon">🕯️</div>
-        <div class="voucher-gift-name">Ear Candle Treatment</div>
-        <div class="voucher-gift-qty">1 Session</div>
-      </div>
-      <div class="voucher-gift">
-        <div class="voucher-gift-icon">💆</div>
-        <div class="voucher-gift-name">60 mins Aroma Head Spa</div>
-        <div class="voucher-gift-qty">1 Session</div>
-      </div>
-      <div class="voucher-gift">
-        <div class="voucher-gift-icon">🌿</div>
-        <div class="voucher-gift-name">Authentic Thai Balm</div>
-        <div class="voucher-gift-qty">1 Jar</div>
-      </div>
-    </div>
-    <div class="voucher-tnc">* Limited availability only. Terms &amp; conditions apply.</div>
+    <div class="voucher-gv-icon">✦</div>
+    <h2 class="voucher-gv-title">Gift <em>Vouchers</em><br><span>Available</span></h2>
+    <p class="voucher-gv-body">The perfect expression of care &mdash; give your loved ones<br>the gift of wellness and serenity at Thaizen.</p>
+    <a href="https://wa.me/60136949949?text=Hi%20Thaizen%2C%20I%27m%20interested%20in%20purchasing%20a%20gift%20voucher." class="voucher-gv-cta" target="_blank" rel="noopener">Enquire via WhatsApp</a>
+    <div class="voucher-tnc">* Gift vouchers available for purchase. Contact us for details &amp; denominations.</div>
   </div>
 </section>
 
@@ -1215,7 +1276,33 @@ footer {
 <div class="toast" id="toast"><span id="toastIcon">🪷</span><span id="toastMsg"></span></div>
 
 <script>
-function showMenuTab(el,id){document.querySelectorAll('.menu-tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.menu-panel').forEach(p=>p.classList.remove('active'));el.classList.add('active');document.getElementById(id).classList.add('active');}
+function showMenuTab(el,id){
+  document.querySelectorAll('.menu-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.menu-panel').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById(id).classList.add('active');
+  el.scrollIntoView({behavior:'smooth',block:'nearest',inline:'nearest'});
+}
+
+// Tab scroll fade + chevron indicator
+(function(){
+  var wrapper=document.querySelector('.menu-tabs-wrapper');
+  var tabs=document.querySelector('.menu-tabs');
+  if(!tabs||!wrapper)return;
+  function checkScroll(){
+    var atEnd=tabs.scrollLeft+tabs.clientWidth>=tabs.scrollWidth-6;
+    wrapper.classList.toggle('tabs-end',atEnd);
+  }
+  tabs.addEventListener('scroll',checkScroll,{passive:true});
+  checkScroll();
+  // Peek: scroll right to reveal hidden tabs, then scroll back
+  if(tabs.scrollWidth>tabs.clientWidth){
+    setTimeout(function(){
+      tabs.scrollTo({left:60,behavior:'smooth'});
+      setTimeout(function(){ tabs.scrollTo({left:0,behavior:'smooth'}); },750);
+    },900);
+  }
+})();
 function toast(msg,icon='🪷'){document.getElementById('toastMsg').textContent=msg;document.getElementById('toastIcon').textContent=icon;const t=document.getElementById('toast');t.classList.add('show');clearTimeout(t._to);t._to=setTimeout(()=>t.classList.remove('show'),3000);}
 
 // Header scroll effect
@@ -1284,6 +1371,11 @@ function closeMobileNav() {
   document.getElementById('mobileNav').classList.remove('open');
   document.querySelector('.hamburger').textContent = '☰';
 }
+
+  // Member card tap-to-flip (mobile)
+  document.querySelectorAll('.member-card').forEach(function(card) {
+    card.addEventListener('click', function() { card.classList.toggle('is-flipped'); });
+  });
 
 </script>
 

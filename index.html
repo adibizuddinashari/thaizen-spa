@@ -600,10 +600,12 @@ header.scrolled .hamburger { color:var(--stone); }
 .member-tier { font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--sage-light); }
 .member-price { font-family:'Cormorant Garamond',serif; font-size:1.7rem; color:var(--gold-pale); line-height:1; }
 .member-rm { font-size:0.9rem; vertical-align:super; margin-right:2px; color:var(--gold-light); }
-.member-promo { border-top:1px solid rgba(184,144,42,0.18); padding-top:24px; }
-.member-promo-headline { font-family:'Cormorant Garamond',serif; font-size:clamp(1rem,1.6vw,1.25rem); font-style:italic; color:var(--gold-pale); margin-bottom:8px; }
-.member-promo-prizes { font-size:0.7rem; color:rgba(253,249,243,0.45); letter-spacing:0.04em; margin-bottom:10px; line-height:1.9; }
-.member-tnc { font-size:0.58rem; color:rgba(253,249,243,0.25); font-style:italic; }
+.member-topup-label { font-size:0.58rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(253,249,243,0.45); margin-top:4px; }
+.member-free { font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold-light); margin-top:2px; }
+.member-free strong { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:400; }
+.member-carpark { margin-top:8px; background:rgba(184,144,42,0.2); border:1px solid rgba(184,144,42,0.45); border-radius:3px; padding:5px 10px; font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold-light); text-align:center; line-height:1.5; }
+.member-parking-note { border-top:1px solid rgba(184,144,42,0.18); padding-top:20px; font-size:0.75rem; color:rgba(253,249,243,0.55); text-align:center; line-height:1.7; font-style:italic; }
+.member-parking-note strong { color:var(--gold-light); font-style:normal; font-weight:500; }
 @media(max-width:860px){ .member-section { grid-template-columns:1fr; } .member-img { min-height:280px; } .member-content { padding:40px 28px; } }
 @media(max-width:480px){ .member-grid { grid-template-columns:1fr; } }
 /* GIFT VOUCHER */
@@ -1094,25 +1096,29 @@ footer {
     <h2 class="member-title">Membership <em>Package</em></h2>
     <div class="member-grid">
       <div class="member-card">
-        <img src="assets/Silver Member.png" alt="Silver Member" class="member-badge">
-        <div class="member-tier">Silver</div>
+        <img src="assets/Silver member@2x.png" alt="Silver Member" class="member-badge">
+        <div class="member-topup-label">Top Up</div>
         <div class="member-price"><span class="member-rm">RM</span>1,000</div>
+        <div class="member-free">Free &nbsp;<strong>RM100</strong></div>
       </div>
       <div class="member-card member-card--featured">
-        <img src="assets/Gold Member.png" alt="Gold Member" class="member-badge">
-        <div class="member-tier">Gold</div>
+        <img src="assets/Gold Member@2x.png" alt="Gold Member" class="member-badge">
+        <div class="member-topup-label">Top Up</div>
         <div class="member-price"><span class="member-rm">RM</span>2,000</div>
+        <div class="member-free">Free &nbsp;<strong>RM300</strong></div>
       </div>
       <div class="member-card">
-        <img src="assets/Platinum Member.png" alt="Platinum Member" class="member-badge">
-        <div class="member-tier">Platinum</div>
+        <img src="assets/Platinum member@2x.png" alt="Platinum Member" class="member-badge">
+        <div class="member-topup-label">Top Up</div>
         <div class="member-price"><span class="member-rm">RM</span>3,000</div>
+        <div class="member-free">Free &nbsp;<strong>RM500</strong></div>
+        <div class="member-carpark">Free Carpark<br>Maximum 1 car per visit</div>
       </div>
     </div>
-    <div class="member-promo">
-      <div class="member-promo-headline">Entitle for Lucky Draw &times; 1 &mdash; Win Exciting Prizes!</div>
-      <div class="member-promo-prizes">Discount Voucher RM5 &amp; RM10 &nbsp;&middot;&nbsp; Thai Balm &nbsp;&middot;&nbsp; FOC Ear Candle Treatment &nbsp;&middot;&nbsp; FOC Prizes</div>
-      <div class="member-tnc">* Limited availability only. Terms &amp; conditions apply.</div>
+    <div class="member-parking-note">
+      To all our local guests, we've got you covered!<br>
+      Enjoy hassle-free parking at our hotel automated car park<br>
+      for just <strong>RM7 per entry</strong>
     </div>
   </div>
 </section>

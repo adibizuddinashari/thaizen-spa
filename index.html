@@ -769,8 +769,10 @@ footer {
   .hero-cta-row { flex-direction: column; align-items: stretch; gap: 10px; padding: 0 8px; }
   .hero-cta-primary, .hero-cta-secondary { text-align: center; }
   .footer-links { flex-direction: column; gap: 20px; }
-  .menu-tabs { overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-  .menu-tabs::-webkit-scrollbar { display: none; }
+  .menu-tabs { overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; scrollbar-width: thin; scrollbar-color: var(--gold-light) rgba(255,255,255,0.08); }
+  .menu-tabs::-webkit-scrollbar { height:3px; display:block; }
+  .menu-tabs::-webkit-scrollbar-track { background:rgba(255,255,255,0.08); border-radius:2px; }
+  .menu-tabs::-webkit-scrollbar-thumb { background:var(--gold-light); border-radius:2px; }
   .menu-tabs-wrapper { position:relative; overflow:hidden; }
   .menu-tabs-wrapper::after { content:''; position:absolute; top:0; right:0; width:64px; height:100%; background:linear-gradient(to right, transparent, var(--dark-bg) 80%); pointer-events:none; transition:opacity 0.35s; }
   .menu-tabs-wrapper.tabs-end::after { opacity:0; }

@@ -150,6 +150,7 @@ nav a.active { color: var(--gold-light); }
   max-width: 1080px; margin: 0 auto;
   overflow-x: auto;
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
 .menu-tabs::-webkit-scrollbar { display: none; }
 .menu-tab {
@@ -434,16 +435,44 @@ footer {
   header { padding:0 20px; }
   nav { display:none; }
   .hamburger { display:block; }
-  .menu-banner { padding: 100px 24px 56px; }
-  .menu-tabs-section { padding: 0 0; }
-  .menu-content-section { padding: 48px 24px 64px; }
+  .menu-banner { padding: 96px 24px 52px; }
+  .menu-tabs-section { padding: 0; top: 60px; }
+  .menu-tab { padding: 18px 24px; font-size: 0.56rem; letter-spacing: 0.1em; }
+  .menu-content-section { padding: 40px 20px 60px; }
   .mc-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .mc-spa-photo-area { height: 180px; }
   footer { padding:40px 24px 24px; }
   .footer-links { gap:28px; }
   .footer-top { flex-direction: column; gap: 24px; }
 }
-@media(max-width:600px) {
-  .mc-grid { grid-template-columns: 1fr; }
+@media(max-width:640px) {
+  .menu-banner { padding: 86px 20px 44px; }
+  .menu-banner h1 { font-size: clamp(2.2rem, 10vw, 2.8rem); }
+  .menu-banner-eyebrow::before,
+  .menu-banner-eyebrow::after { width: 32px; }
+  .menu-tab { padding: 15px 18px; font-size: 0.5rem; }
+  .mc-grid { grid-template-columns: 1fr; gap: 12px; }
+  .mc-std-body { padding: 20px 20px 22px; }
+  .mc-photo-body { padding: 18px 18px 22px; }
+  .mc-spa-body { padding: 18px 20px 24px; }
+  .mc-spa-photo-area { height: 200px; }
+  .mc-pax-row { gap: 8px; }
+  .sst-notice { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .footer-links { flex-direction: column; gap: 24px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .panel-header { margin-bottom: 24px; }
+  .menu-content-section { padding: 32px 16px 52px; }
+}
+@media(max-width:420px) {
+  .menu-banner { padding: 80px 16px 40px; }
+  .menu-tab { padding: 13px 14px; font-size: 0.48rem; }
+  .mc-photo-area { height: 148px; }
+  .mc-spa-photo-area { height: 180px; }
+  .mc-std-body { padding: 18px 18px 20px; }
+  .mc-name { font-size: 1.1rem; }
+  .mc-price { font-size: 1.1rem; }
+  .mc-pax-price { font-size: 1.15rem; }
+  footer { padding: 36px 16px 20px; }
 }
 </style>
 </head>

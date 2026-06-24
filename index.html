@@ -1046,6 +1046,61 @@ footer {
   border-left: 1px solid rgba(184,144,42,0.3);
   padding: 14px 20px; display: flex; align-items: center;
 }
+.cta-platinum {
+  padding: 16px 40px;
+  background: linear-gradient(135deg, #263044 0%, #7a9ab4 30%, #c8d8e4 55%, #7a9ab4 75%, #263044 100%);
+  background-size: 200% 100%;
+  color: #141e2c;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  animation: platinumPulse 3s ease-in-out infinite;
+  box-shadow:
+    0 0 12px rgba(160, 200, 230, 0.5),
+    0 0 28px rgba(130, 170, 210, 0.3),
+    0 4px 16px rgba(0,0,0,0.4);
+}
+.cta-platinum::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.45), transparent);
+  transform: skewX(-20deg);
+  animation: shimmer 3s ease-in-out infinite;
+}
+.cta-platinum:hover {
+  transform: translateY(-3px) scale(1.02);
+  animation: none;
+  box-shadow:
+    0 0 24px rgba(190, 225, 248, 0.9),
+    0 0 56px rgba(160, 200, 235, 0.6),
+    0 8px 24px rgba(0,0,0,0.45);
+}
+@keyframes platinumPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 10px rgba(155, 200, 228, 0.45),
+      0 0 24px rgba(130, 170, 210, 0.28),
+      0 4px 16px rgba(0,0,0,0.35);
+  }
+  50% {
+    box-shadow:
+      0 0 22px rgba(195, 228, 248, 0.85),
+      0 0 48px rgba(160, 205, 235, 0.58),
+      0 4px 20px rgba(0,0,0,0.4);
+  }
+}
 @media(max-width:960px) {
   .menu-teaser-section { padding: 72px 24px; }
   .menu-teaser-cards { grid-template-columns: 1fr; }
@@ -1240,7 +1295,7 @@ footer {
 
   <div class="menu-teaser-cta-block">
     <p class="menu-teaser-hint">These are just three from a curated menu of 15+ treatments across 5 categories.</p>
-    <a href="menu.html" class="hero-cta-primary">Explore the Full Menu</a>
+    <a href="menu.html" class="cta-platinum">Explore the Full Menu</a>
   </div>
 </section>
 

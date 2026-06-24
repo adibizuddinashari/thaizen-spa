@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Our Treatments — Thaizen Wellness &amp; Spa</title>
 <link rel="icon" type="image/webp" href="assets/thaizen%20logo.webp">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cinzel:wght@400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Cinzel:wght@400;500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
   --gold: #b8902a;
@@ -22,7 +22,7 @@
   --sage-light: #afc09a;
   --parchment: #ede4d0;
   --dark-bg: #1e1a14;
-  --dark-card: #2a2318;
+  --dark-card: #252018;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior: smooth; font-size: 18px; }
@@ -127,9 +127,9 @@ nav a.active { color: var(--gold-light); }
   background: rgba(184,144,42,0.5);
 }
 .menu-banner h1 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'EB Garamond', serif;
   font-size: clamp(2.8rem, 5vw, 5rem);
-  font-weight: 300; color: var(--gold-pale);
+  font-weight: 400; color: var(--gold-pale);
   line-height: 1.05; margin-bottom: 18px;
 }
 .menu-banner h1 em { font-style: italic; color: var(--gold-light); }
@@ -155,18 +155,18 @@ nav a.active { color: var(--gold-light); }
 .menu-tabs::-webkit-scrollbar { display: none; }
 .menu-tab {
   font-family: 'Jost', sans-serif;
-  font-size: 0.61rem; letter-spacing: 0.14em;
-  text-transform: uppercase; color: rgba(196,160,106,0.45);
+  font-size: 0.61rem; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(196,160,106,0.4);
   background: none; border: none;
-  padding: 20px 28px;
+  padding: 20px 32px;
   cursor: pointer;
-  border-bottom: 2px solid transparent;
+  border-bottom: 1.5px solid transparent;
   white-space: nowrap;
   transition: color 0.25s, border-color 0.25s;
 }
 .menu-tab:hover { color: var(--clay); }
 .menu-tab.active {
-  color: var(--gold-light);
+  color: var(--gold);
   border-bottom-color: var(--gold);
 }
 
@@ -222,15 +222,15 @@ nav a.active { color: var(--gold-light); }
   flex: 1;
 }
 .mc-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem; font-weight: 300;
-  color: var(--gold-pale);
+  font-family: 'EB Garamond', serif;
+  font-size: 1.22rem; font-weight: 700;
+  color: #ffffff;
   margin-bottom: 4px; line-height: 1.2;
 }
 .mc-name-cn {
   font-family: 'Jost', sans-serif;
   font-size: 0.56rem; color: var(--clay);
-  opacity: 0.5; letter-spacing: 0.04em;
+  opacity: 0.5; letter-spacing: 0.06em;
   margin-bottom: 18px;
 }
 .mc-divider {
@@ -244,12 +244,12 @@ nav a.active { color: var(--gold-light); }
 }
 .mc-dur {
   font-family: 'Jost', sans-serif;
-  font-size: 0.56rem; letter-spacing: 0.08em;
-  color: var(--sage); opacity: 0.75;
+  font-size: 0.56rem; font-weight: 600; letter-spacing: 0.1em;
+  color: var(--sage);
 }
 .mc-price {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem; color: var(--gold);
+  font-family: 'EB Garamond', serif;
+  font-size: 1.22rem; font-weight: 600; color: var(--gold);
 }
 .mc-note {
   font-family: 'Jost', sans-serif;
@@ -275,15 +275,15 @@ nav a.active { color: var(--gold-light); }
 .mc-photo-overlay { position: relative; z-index: 1; }
 .mc-photo-eyebrow {
   font-family: 'Jost', sans-serif;
-  font-size: 0.44rem; letter-spacing: 0.18em;
-  text-transform: uppercase; color: var(--gold-light);
-  opacity: 0.75; margin-bottom: 5px;
+  font-size: 0.44rem; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--gold);
+  opacity: 0.8; margin-bottom: 5px;
 }
 .mc-photo-eyebrow--sage { color: var(--sage-light); }
 .mc-photo-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem; font-weight: 300;
-  color: var(--gold-pale); font-style: italic;
+  font-family: 'EB Garamond', serif;
+  font-size: 1.22rem; font-weight: 600;
+  color: #ffffff; font-style: italic;
   line-height: 1.2;
 }
 .mc-photo-sub {
@@ -293,14 +293,15 @@ nav a.active { color: var(--gold-light); }
   margin-top: 3px;
 }
 .mc-photo-body {
-  padding: 18px 22px 24px;
+  padding: 20px 20px 24px;
+  border-top: 2px solid var(--gold);
   display: flex; flex-direction: column;
   gap: 10px; flex: 1;
 }
 .mc-photo-desc {
   font-family: 'Jost', sans-serif;
   font-size: 0.6rem; color: var(--clay);
-  opacity: 0.55; line-height: 1.7;
+  opacity: 0.45; line-height: 1.7;
 }
 .mc-photo-footer {
   display: flex; justify-content: space-between; align-items: baseline;
@@ -347,11 +348,11 @@ nav a.active { color: var(--gold-light); }
 .mc-spa-price-row:last-child { border-bottom: none; }
 .mc-spa-dur {
   font-family: 'Jost', sans-serif;
-  font-size: 0.56rem; color: var(--sage-light); letter-spacing: 0.06em;
+  font-size: 0.56rem; font-weight: 600; color: var(--sage-light); letter-spacing: 0.06em;
 }
 .mc-spa-price {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.22rem; color: var(--gold);
+  font-family: 'EB Garamond', serif;
+  font-size: 1.22rem; font-weight: 600; color: var(--gold);
 }
 .mc-inclusions-label {
   font-family: 'Jost', sans-serif;
@@ -387,8 +388,8 @@ nav a.active { color: var(--gold-light); }
   text-transform: uppercase; color: var(--gold); opacity: 0.6;
 }
 .mc-pax-price {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.33rem; color: var(--gold);
+  font-family: 'EB Garamond', serif;
+  font-size: 1.33rem; font-weight: 600; color: var(--gold);
 }
 .mc-spa-footer-note {
   font-family: 'Jost', sans-serif;

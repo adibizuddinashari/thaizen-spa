@@ -263,15 +263,14 @@ nav a.active { color: var(--gold-light); }
   height: 160px; position: relative;
   display: flex; align-items: flex-end; padding: 20px;
   flex-shrink: 0;
+  background-size: cover; background-position: center;
+  background-color: #252018;
 }
 .mc-photo-area::after {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(to bottom, transparent 30%, rgba(20,16,8,0.72) 100%);
+  background: linear-gradient(to bottom, transparent 25%, rgba(10,8,4,0.78) 100%);
 }
-.mc-photo-area--amber { background: linear-gradient(145deg, #1a1008 0%, #2e1c08 40%, #3d2808 70%, #1e1408 100%); }
-.mc-photo-area--sage  { background: linear-gradient(145deg, #0e1008 0%, #181c0a 40%, #252810 70%, #141408 100%); }
-.mc-photo-area--warm  { background: linear-gradient(145deg, #251408 0%, #3a2008 40%, #4a2e0a 70%, #2a1808 100%); }
 .mc-photo-overlay { position: relative; z-index: 1; }
 .mc-photo-eyebrow {
   font-family: 'Jost', sans-serif;
@@ -684,7 +683,7 @@ footer {
       <div class="mc-grid">
 
         <div class="mc">
-          <div class="mc-photo-area mc-photo-area--amber">
+          <div class="mc-photo-area" style="background-image:url('assets/pkg-shoulder-head.jpg')">
             <div class="mc-photo-overlay">
               <div class="mc-photo-eyebrow">Package A · 90 mins</div>
               <div class="mc-photo-name">Foot + Shoulder &amp; Head</div>
@@ -700,7 +699,7 @@ footer {
         </div>
 
         <div class="mc">
-          <div class="mc-photo-area mc-photo-area--amber">
+          <div class="mc-photo-area" style="background-image:url('assets/menu-thai-massage.jpg')">
             <div class="mc-photo-overlay">
               <div class="mc-photo-eyebrow">Package B · 120 mins</div>
               <div class="mc-photo-name">Foot + Thai Traditional</div>
@@ -716,7 +715,7 @@ footer {
         </div>
 
         <div class="mc">
-          <div class="mc-photo-area mc-photo-area--amber">
+          <div class="mc-photo-area" style="background-image:url('assets/pkg-oil-massage.jpg')">
             <div class="mc-photo-overlay">
               <div class="mc-photo-eyebrow">Package C · 120 mins</div>
               <div class="mc-photo-name">Foot + Oil Massage</div>
@@ -732,7 +731,7 @@ footer {
         </div>
 
         <div class="mc">
-          <div class="mc-photo-area mc-photo-area--amber">
+          <div class="mc-photo-area" style="background-image:url('assets/menu-aroma-oil.jpg')">
             <div class="mc-photo-overlay">
               <div class="mc-photo-eyebrow">Package D · 120 mins</div>
               <div class="mc-photo-name">Foot + Aromatherapy</div>
@@ -748,7 +747,7 @@ footer {
         </div>
 
         <div class="mc">
-          <div class="mc-photo-area mc-photo-area--amber">
+          <div class="mc-photo-area" style="background-image:url('assets/pkg-aroma-extended.jpg')">
             <div class="mc-photo-overlay">
               <div class="mc-photo-eyebrow">Package E · 150 mins</div>
               <div class="mc-photo-name">Foot + Aromatherapy (Extended)</div>
@@ -764,7 +763,7 @@ footer {
         </div>
 
         <div class="mc">
-          <div class="mc-photo-area mc-photo-area--amber">
+          <div class="mc-photo-area" style="background-image:url('assets/pkg-aroma-full.jpg')">
             <div class="mc-photo-overlay">
               <div class="mc-photo-eyebrow">Package F · 180 mins</div>
               <div class="mc-photo-name">Foot + Aromatherapy (Full)</div>

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Thaizen Wellness & Spa George Town, Penang</title>
 <link rel="icon" type="image/webp" href="assets/thaizen%20logo.webp">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cinzel:wght@400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cinzel:wght@400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
   --gold: #b8902a;
@@ -913,7 +913,7 @@ footer {
   flex-direction: column;
   align-items: center;
   padding: 100px 80px;
-  background: #19160f;
+  background: var(--dark-bg);
   border-top: 1px solid rgba(184,144,42,0.08);
   border-bottom: 1px solid rgba(184,144,42,0.08);
 }
@@ -936,11 +936,10 @@ footer {
 }
 .menu-teaser-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.4rem, 3.5vw, 3.4rem);
+  font-size: clamp(2.8rem, 4.3vw, 3.875rem);
   font-weight: 300; color: var(--gold-pale);
   text-align: center; margin-bottom: 14px;
 }
-.menu-teaser-title em { font-style: italic; }
 .menu-teaser-sub {
   font-family: 'Jost', sans-serif;
   font-size: 0.67rem; color: var(--clay);
@@ -973,14 +972,13 @@ footer {
 .mtc-photo {
   height: 180px; position: relative;
   display: flex; align-items: flex-end; padding: 24px;
+  background-size: cover; background-position: center;
+  background-color: #252018;
 }
-.mtc-photo--basic { background: linear-gradient(150deg, #2e1c06 0%, #3a2508 50%, #1a1208 100%); }
-.mtc-photo--special { background: linear-gradient(150deg, #0e1208 0%, #1a2010 50%, #0a0e06 100%); }
-.mtc-photo--spa { background: linear-gradient(150deg, #2a1606 0%, #402008 50%, #1e1208 100%); }
 .mtc-photo::after {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(to bottom, transparent 40%, rgba(20,16,8,0.7) 100%);
+  background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.68) 100%);
 }
 .mtc-photo-content { position: relative; z-index: 1; }
 .mtc-category {
@@ -991,8 +989,8 @@ footer {
 .mtc-category--sage { color: var(--sage-light); }
 .mtc-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.44rem; font-weight: 300;
-  color: var(--gold-pale); font-style: italic;
+  font-size: 1.375rem; font-weight: 600;
+  color: #ffffff; line-height: 1.27;
 }
 .mtc-name-cn {
   font-family: 'Jost', sans-serif; font-size: 0.56rem;
@@ -1019,8 +1017,8 @@ footer {
   color: var(--sage); opacity: 0.7;
 }
 .mtc-price {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.11rem; color: var(--gold);
+  font-family: 'EB Garamond', serif;
+  font-size: 1.375rem; font-weight: 500; color: var(--gold);
 }
 .menu-teaser-cta-block {
   display: flex; flex-direction: column;
@@ -1182,13 +1180,13 @@ footer {
     <div class="menu-teaser-eyebrow">Our Treatments</div>
     <div class="menu-teaser-rule"></div>
   </div>
-  <h2 class="menu-teaser-title">The Thaizen <em>Menu</em></h2>
+  <h2 class="menu-teaser-title">The Thaizen Menu</h2>
   <p class="menu-teaser-sub">From grounding Thai traditionals to signature spa journeys — every treatment is crafted to restore you from within. Explore the full menu to find your ritual.</p>
 
   <div class="menu-teaser-cards">
     <!-- Thai Traditional Massage -->
     <div class="mtc">
-      <div class="mtc-photo mtc-photo--basic">
+      <div class="mtc-photo" style="background-image:url('assets/menu-thai-massage.jpg')">
         <div class="mtc-photo-content">
           <div class="mtc-category">Basic Harmony</div>
           <div class="mtc-name">Thai Traditional Massage</div>
@@ -1205,7 +1203,7 @@ footer {
     </div>
     <!-- Aromatherapy Hot Oil Massage -->
     <div class="mtc">
-      <div class="mtc-photo mtc-photo--special">
+      <div class="mtc-photo" style="background-image:url('assets/menu-aroma-oil.jpg')">
         <div class="mtc-photo-content">
           <div class="mtc-category mtc-category--sage">Special Treatment</div>
           <div class="mtc-name">Aromatherapy Hot Oil</div>
@@ -1223,7 +1221,7 @@ footer {
     <!-- Zen Spa Package -->
     <div class="mtc">
       <div class="mtc-signature-badge">Signature</div>
-      <div class="mtc-photo mtc-photo--spa">
+      <div class="mtc-photo" style="background-image:url('assets/menu-zen-spa.jpg')">
         <div class="mtc-photo-content">
           <div class="mtc-category">Spa Experience · 3 Hours</div>
           <div class="mtc-name">Zen Spa Package</div>

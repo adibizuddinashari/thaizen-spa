@@ -116,27 +116,26 @@ nav a.active { color: var(--gold-light); }
 }
 .menu-banner-eyebrow {
   font-family: 'Jost', sans-serif;
-  font-size: 0.6rem; letter-spacing: 0.26em;
+  font-size: 0.56rem; letter-spacing: 0.18em;
   text-transform: uppercase; color: var(--gold);
-  display: flex; align-items: center; gap: 14px;
-  margin-bottom: 20px;
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 18px;
 }
 .menu-banner-eyebrow::before,
 .menu-banner-eyebrow::after {
-  content: ''; width: 32px; height: 1px;
-  background: rgba(184,144,42,0.5);
+  content: ''; width: 48px; height: 1px;
+  background: var(--gold); opacity: 0.35;
 }
 .menu-banner h1 {
-  font-family: 'EB Garamond', serif;
-  font-size: clamp(2.8rem, 5vw, 5rem);
-  font-weight: 500; color: var(--gold-pale);
-  line-height: 1.05; margin-bottom: 18px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3.6vw, 2.9rem);
+  font-weight: 300; color: var(--gold-pale);
+  line-height: 1.15; margin-bottom: 14px;
 }
-.menu-banner h1 em { font-style: italic; color: var(--gold-light); }
 .menu-banner-sub {
   font-family: 'Jost', sans-serif;
-  font-size: 0.72rem; color: var(--clay);
-  opacity: 0.65; letter-spacing: 0.06em;
+  font-size: 0.56rem; color: var(--clay);
+  opacity: 0.5; letter-spacing: 0.06em;
 }
 
 /* ── TAB NAVIGATION ── */
@@ -476,19 +475,19 @@ footer {
 
 <!-- BANNER -->
 <div class="menu-banner">
-  <div class="menu-banner-eyebrow">George Town · Penang</div>
-  <h1>The Thaizen <em>Menu</em></h1>
+  <div class="menu-banner-eyebrow">Our Treatments</div>
+  <h1>Menu</h1>
   <p class="menu-banner-sub">All prices inclusive of 8% SST · 所有价格已包含8% SST</p>
 </div>
 
 <!-- STICKY TAB NAV -->
 <div class="menu-tabs-section">
   <div class="menu-tabs">
-    <button class="menu-tab active" onclick="showTab(this,'panel-basic')">Basic Harmony 基本局部护理</button>
-    <button class="menu-tab" onclick="showTab(this,'panel-special')">Special Treatment 特别护理</button>
-    <button class="menu-tab" onclick="showTab(this,'panel-pkg')">Packages 附加配套</button>
-    <button class="menu-tab" onclick="showTab(this,'panel-other')">Other Treatments 其它护理</button>
-    <button class="menu-tab" onclick="showTab(this,'panel-spa')">Spa 水疗</button>
+    <button class="menu-tab active" onclick="showTab(this,'panel-basic')">Basic Harmony</button>
+    <button class="menu-tab" onclick="showTab(this,'panel-special')">Special Treatment</button>
+    <button class="menu-tab" onclick="showTab(this,'panel-pkg')">Packages</button>
+    <button class="menu-tab" onclick="showTab(this,'panel-other')">Other Treatments</button>
+    <button class="menu-tab" onclick="showTab(this,'panel-spa')">Spa</button>
   </div>
 </div>
 

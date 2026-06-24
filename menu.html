@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Treatments — Thaizen Wellness &amp; Spa</title>
+<link rel="icon" type="image/webp" href="assets/thaizen%20logo.webp">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cinzel:wght@400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #b8902a;
+  --gold-light: #d4af6a;
+  --gold-pale: #f0e4c4;
+  --clay: #c4a06a;
+  --stone: #3a3228;
+  --stone-mid: #5c4f40;
+  --bark: #7a6248;
+  --linen: #f8f3eb;
+  --warm-white: #fdf9f3;
+  --mist: #e8dfd0;
+  --sage: #7a8c6a;
+  --sage-light: #afc09a;
+  --parchment: #ede4d0;
+  --dark-bg: #1e1a14;
+  --dark-card: #2a2318;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; font-size: 18px; }
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--dark-bg);
+  color: var(--gold-pale);
+  overflow-x: hidden;
+}
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--dark-bg); }
+::-webkit-scrollbar-thumb { background: var(--clay); border-radius: 3px; }
+
+/* ── HEADER ── */
+header {
+  position: fixed; top:0; left:0; right:0; z-index:200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px; height: 70px;
+  background: rgba(20,17,11,0.96);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(184,144,42,0.12);
+  transition: all 0.4s ease;
+}
+.logo-wrap { display:flex; align-items:center; gap:12px; }
+.logo {
+  font-family: 'Cinzel', serif;
+  font-size: 1.25rem; font-weight: 500;
+  letter-spacing: 0.22em; color: var(--gold-pale);
+  text-decoration: none;
+}
+.logo span { color: var(--gold-light); }
+nav { display:flex; gap:28px; align-items:center; }
+nav a {
+  text-decoration:none; font-size:0.73rem;
+  letter-spacing:0.14em; text-transform:uppercase;
+  color: rgba(253,249,243,0.55); transition: color 0.3s;
+}
+nav a:hover { color: var(--gold-light); }
+nav a.active { color: var(--gold-light); }
+.nav-cta {
+  background: rgba(184,144,42,0.85) !important;
+  color: var(--dark-bg) !important;
+  padding: 9px 22px !important;
+  opacity:1 !important; font-weight:500;
+  transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--gold-light) !important; color: var(--stone) !important; }
+.hamburger { display:none; background:none; border:none; font-size:1.4rem; cursor:pointer; color:var(--gold-pale); }
+
+/* ── MOBILE NAV ── */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 70px; left: 0; right: 0;
+  background: rgba(20,17,11,0.98);
+  flex-direction: column;
+  padding: 16px 0;
+  z-index: 199;
+  border-bottom: 1px solid rgba(184,144,42,0.15);
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  text-decoration:none; font-size:0.78rem;
+  letter-spacing:0.12em; text-transform:uppercase;
+  color: rgba(253,249,243,0.6);
+  padding: 14px 32px;
+  border-bottom: 1px solid rgba(184,144,42,0.08);
+  transition: color 0.2s;
+}
+.mobile-nav a:last-child { border-bottom: none; }
+.mobile-nav a:hover { color: var(--gold-light); }
+.mob-cta-btn {
+  margin: 12px 32px 4px !important;
+  background: var(--gold) !important;
+  color: var(--dark-bg) !important;
+  text-align: center; padding: 12px !important;
+  border-bottom: none !important;
+  font-weight: 500 !important;
+  border-radius: 2px;
+}
+
+/* ── MENU PAGE BANNER ── */
+.menu-banner {
+  padding: 120px 80px 80px;
+  background: var(--dark-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-bottom: 1px solid rgba(184,144,42,0.1);
+}
+.menu-banner-eyebrow {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.6rem; letter-spacing: 0.26em;
+  text-transform: uppercase; color: var(--gold);
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 20px;
+}
+.menu-banner-eyebrow::before,
+.menu-banner-eyebrow::after {
+  content: ''; width: 32px; height: 1px;
+  background: rgba(184,144,42,0.5);
+}
+.menu-banner h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.8rem, 5vw, 5rem);
+  font-weight: 300; color: var(--gold-pale);
+  line-height: 1.05; margin-bottom: 18px;
+}
+.menu-banner h1 em { font-style: italic; color: var(--gold-light); }
+.menu-banner-sub {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem; color: var(--clay);
+  opacity: 0.65; letter-spacing: 0.06em;
+}
+
+/* ── TAB NAVIGATION ── */
+.menu-tabs-section {
+  background: #19160f;
+  padding: 0 80px;
+  border-bottom: 1px solid rgba(184,144,42,0.12);
+  position: sticky; top: 70px; z-index: 100;
+}
+.menu-tabs {
+  display: flex; flex-direction: row;
+  max-width: 1080px; margin: 0 auto;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.menu-tabs::-webkit-scrollbar { display: none; }
+.menu-tab {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.61rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: rgba(196,160,106,0.45);
+  background: none; border: none;
+  padding: 20px 28px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: color 0.25s, border-color 0.25s;
+}
+.menu-tab:hover { color: var(--clay); }
+.menu-tab.active {
+  color: var(--gold-light);
+  border-bottom-color: var(--gold);
+}
+
+/* ── MENU PANELS ── */
+.menu-panel { display: none; }
+.menu-panel.active { display: block; }
+
+/* ── MENU PAGE CONTENT ── */
+.menu-content-section {
+  background: var(--dark-bg);
+  padding: 64px 80px 80px;
+}
+.menu-content-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+/* ── PANEL HEADER ── */
+.panel-header {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 36px;
+}
+.panel-header-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.55rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--gold);
+  opacity: 0.6; white-space: nowrap;
+}
+.panel-header-rule {
+  flex: 1; height: 1px;
+  background: rgba(184,144,42,0.15);
+}
+
+/* ── STANDARD 3-COL CARD GRID ── */
+.mc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* ── BASE CARD ── */
+.mc {
+  display: flex; flex-direction: column;
+  background: var(--dark-card);
+  border-top: 2px solid var(--gold);
+  overflow: hidden; position: relative;
+}
+
+/* ── STANDARD CARD (no photo) ── */
+.mc-std-body {
+  padding: 24px 26px 28px;
+  display: flex; flex-direction: column;
+  flex: 1;
+}
+.mc-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem; font-weight: 300;
+  color: var(--gold-pale);
+  margin-bottom: 4px; line-height: 1.2;
+}
+.mc-name-cn {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.56rem; color: var(--clay);
+  opacity: 0.5; letter-spacing: 0.04em;
+  margin-bottom: 18px;
+}
+.mc-divider {
+  width: 100%; height: 1px;
+  background: rgba(255,255,255,0.06);
+  margin-bottom: 16px;
+}
+.mc-price-rows { display: flex; flex-direction: column; gap: 10px; }
+.mc-price-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+}
+.mc-dur {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.56rem; letter-spacing: 0.08em;
+  color: var(--sage); opacity: 0.75;
+}
+.mc-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; color: var(--gold);
+}
+.mc-note {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.5rem; color: var(--clay);
+  opacity: 0.4; font-style: italic;
+  margin-top: 10px;
+}
+
+/* ── PHOTO CARD ── */
+.mc-photo-area {
+  height: 160px; position: relative;
+  display: flex; align-items: flex-end; padding: 20px;
+  flex-shrink: 0;
+}
+.mc-photo-area::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, transparent 30%, rgba(20,16,8,0.72) 100%);
+}
+.mc-photo-area--amber { background: linear-gradient(145deg, #1a1008 0%, #2e1c08 40%, #3d2808 70%, #1e1408 100%); }
+.mc-photo-area--sage  { background: linear-gradient(145deg, #0e1008 0%, #181c0a 40%, #252810 70%, #141408 100%); }
+.mc-photo-area--warm  { background: linear-gradient(145deg, #251408 0%, #3a2008 40%, #4a2e0a 70%, #2a1808 100%); }
+.mc-photo-overlay { position: relative; z-index: 1; }
+.mc-photo-eyebrow {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.44rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--gold-light);
+  opacity: 0.75; margin-bottom: 5px;
+}
+.mc-photo-eyebrow--sage { color: var(--sage-light); }
+.mc-photo-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem; font-weight: 300;
+  color: var(--gold-pale); font-style: italic;
+  line-height: 1.2;
+}
+.mc-photo-sub {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.5rem; color: var(--clay);
+  opacity: 0.55; letter-spacing: 0.04em;
+  margin-top: 3px;
+}
+.mc-photo-body {
+  padding: 18px 22px 24px;
+  display: flex; flex-direction: column;
+  gap: 10px; flex: 1;
+}
+.mc-photo-desc {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.6rem; color: var(--clay);
+  opacity: 0.55; line-height: 1.7;
+}
+.mc-photo-footer {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* ── SIGNATURE BADGE ── */
+.mc-badge {
+  position: absolute; top: 14px; right: 0;
+  background: var(--gold);
+  padding: 5px 14px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.44rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--dark-bg);
+  z-index: 10;
+}
+
+/* ── SPA CARD (tall photo + inclusions) ── */
+.mc-spa-photo-area {
+  height: 200px; position: relative;
+  display: flex; align-items: flex-end; padding: 20px 24px;
+  flex-shrink: 0;
+}
+.mc-spa-photo-area::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, transparent 30%, rgba(20,16,8,0.75) 100%);
+}
+.mc-spa-photo-area--aroma { background: linear-gradient(145deg, #1a1008 0%, #2e1c06 35%, #3d2808 65%, #1e1408 100%); }
+.mc-spa-photo-area--foot  { background: linear-gradient(145deg, #0e1008 0%, #181c0a 35%, #252810 65%, #141408 100%); }
+.mc-spa-photo-area--zen   { background: linear-gradient(145deg, #251408 0%, #3a2008 35%, #4a2e0a 65%, #2a1808 100%); }
+.mc-spa-body {
+  padding: 20px 24px 28px;
+  border-top: 2px solid var(--gold);
+  display: flex; flex-direction: column; gap: 14px;
+}
+.mc-spa-price-rows { display: flex; flex-direction: column; gap: 8px; }
+.mc-spa-price-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.mc-spa-price-row:last-child { border-bottom: none; }
+.mc-spa-dur {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.56rem; color: var(--sage-light); letter-spacing: 0.06em;
+}
+.mc-spa-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.22rem; color: var(--gold);
+}
+.mc-inclusions-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.5rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gold);
+  opacity: 0.45;
+}
+.mc-inclusions-text {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.56rem; color: var(--clay);
+  opacity: 0.5; line-height: 1.8;
+}
+.mc-spa-note {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.5rem; color: var(--clay);
+  opacity: 0.3; font-style: italic;
+}
+.mc-spa-breakdown { display: flex; flex-direction: column; gap: 6px; }
+.mc-spa-breakdown-row {
+  display: flex; justify-content: space-between;
+  font-family: 'Jost', sans-serif; font-size: 0.56rem;
+  color: var(--clay); opacity: 0.6;
+}
+.mc-pax-row { display: flex; flex-direction: row; gap: 12px; }
+.mc-pax-box {
+  flex: 1; text-align: center; padding: 12px;
+  border: 1px solid rgba(184,144,42,0.2);
+  display: flex; flex-direction: column; gap: 4px;
+}
+.mc-pax-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.5rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gold); opacity: 0.6;
+}
+.mc-pax-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.33rem; color: var(--gold);
+}
+.mc-spa-footer-note {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.5rem; color: var(--clay);
+  opacity: 0.35; font-style: italic; text-align: center;
+}
+
+/* ── SST NOTICE ── */
+.sst-notice {
+  max-width: 1080px; margin: 48px auto 0;
+  padding: 14px 20px;
+  border: 1px solid rgba(184,144,42,0.15);
+  background: rgba(184,144,42,0.04);
+  display: flex; align-items: center; gap: 12px;
+}
+.sst-notice p {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.61rem; color: var(--clay); opacity: 0.7;
+}
+.sst-notice p strong { color: var(--gold-light); opacity: 1; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--dark-bg);
+  padding: 48px 64px 32px;
+  border-top: 1px solid rgba(184,144,42,0.12);
+}
+.footer-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:36px; gap:40px; flex-wrap:wrap; }
+.footer-logo { font-family:'Cinzel',serif; font-size:1.2rem; letter-spacing:0.2em; color:var(--gold-pale); margin-bottom:8px; }
+.footer-logo span { color:var(--gold); }
+.footer-tagline { font-size:0.75rem; color:var(--clay); opacity:0.6; font-style:italic; }
+.footer-links { display:flex; gap:48px; flex-wrap:wrap; }
+.footer-col h5 { font-size:0.65rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; }
+.footer-col a { display:block; font-size:0.78rem; color:rgba(255,255,255,0.45); text-decoration:none; margin-bottom:8px; transition:color 0.2s; }
+.footer-col a:hover { color:var(--gold-light); }
+.footer-col p { font-size:0.78rem; color:rgba(255,255,255,0.4); margin-bottom:6px; line-height:1.6; }
+.footer-bottom { border-top:1px solid rgba(255,255,255,0.06); padding-top:20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+.footer-copy { font-size:0.7rem; color:rgba(255,255,255,0.25); }
+.footer-sst { font-size:0.7rem; color:var(--clay); opacity:0.5; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px) {
+  header { padding:0 20px; }
+  nav { display:none; }
+  .hamburger { display:block; }
+  .menu-banner { padding: 100px 24px 56px; }
+  .menu-tabs-section { padding: 0 0; }
+  .menu-content-section { padding: 48px 24px 64px; }
+  .mc-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+  footer { padding:40px 24px 24px; }
+  .footer-links { gap:28px; }
+  .footer-top { flex-direction: column; gap: 24px; }
+}
+@media(max-width:600px) {
+  .mc-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="mainHeader">
+  <div class="logo-wrap">
+    <a href="index.html" class="logo">THAI<span>ZEN</span></a>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#info">Visit Us</a>
+    <a href="menu.html" class="active">Menu</a>
+    <a href="index.html#membership">Membership</a>
+    <a href="index.html#booking" class="nav-cta">Book Now</a>
+  </nav>
+  <button class="hamburger" onclick="document.getElementById('mobileNav').classList.toggle('open');this.textContent=document.getElementById('mobileNav').classList.contains('open')?'✕':'☰'">☰</button>
+</header>
+
+<!-- Mobile Nav -->
+<nav class="mobile-nav" id="mobileNav">
+  <a href="index.html" onclick="this.closest('nav').classList.remove('open')">Home</a>
+  <a href="index.html#info" onclick="this.closest('nav').classList.remove('open')">Visit Us</a>
+  <a href="menu.html" onclick="this.closest('nav').classList.remove('open')">Menu</a>
+  <a href="index.html#membership" onclick="this.closest('nav').classList.remove('open')">Membership</a>
+  <a class="mob-cta-btn" href="index.html#booking" onclick="this.closest('nav').classList.remove('open')">Book Now</a>
+</nav>
+
+<!-- BANNER -->
+<div class="menu-banner">
+  <div class="menu-banner-eyebrow">George Town · Penang</div>
+  <h1>The Thaizen <em>Menu</em></h1>
+  <p class="menu-banner-sub">All prices inclusive of 8% SST · 所有价格已包含8% SST</p>
+</div>
+
+<!-- STICKY TAB NAV -->
+<div class="menu-tabs-section">
+  <div class="menu-tabs">
+    <button class="menu-tab active" onclick="showTab(this,'panel-basic')">Basic Harmony 基本局部护理</button>
+    <button class="menu-tab" onclick="showTab(this,'panel-special')">Special Treatment 特别护理</button>
+    <button class="menu-tab" onclick="showTab(this,'panel-pkg')">Packages 附加配套</button>
+    <button class="menu-tab" onclick="showTab(this,'panel-other')">Other Treatments 其它护理</button>
+    <button class="menu-tab" onclick="showTab(this,'panel-spa')">Spa 水疗</button>
+  </div>
+</div>
+
+<!-- MENU PANELS -->
+<div class="menu-content-section">
+
+  <!-- ── BASIC HARMONY ── -->
+  <div class="menu-panel active" id="panel-basic">
+    <div class="menu-content-inner">
+      <div class="panel-header">
+        <span class="panel-header-label">Basic Harmony 基本局部护理</span>
+        <div class="panel-header-rule"></div>
+      </div>
+      <div class="mc-grid">
+
+        <div class="mc">
+          <div class="mc-std-body">
+            <div class="mc-name">Foot Massage</div>
+            <div class="mc-name-cn">足部按摩</div>
+            <div class="mc-divider"></div>
+            <div class="mc-price-rows">
+              <div class="mc-price-row"><span class="mc-dur">60 mins</span><span class="mc-price">RM 69</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mc">
+          <div class="mc-std-body">
+            <div class="mc-name">Thai Traditional Massage</div>
+            <div class="mc-name-cn">泰式传统按摩</div>
+            <div class="mc-divider"></div>
+            <div class="mc-price-rows">
+              <div class="mc-price-row"><span class="mc-dur">60 mins</span><span class="mc-price">RM 95</span></div>
+              <div class="mc-price-row"><span class="mc-dur">90 mins</span><span class="mc-price">RM 130</span></div>
+              <div class="mc-price-row"><span class="mc-dur">120 mins</span><span class="mc-price">RM 165</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mc">
+          <div class="mc-std-body">
+            <div class="mc-name">Oil Massage</div>
+            <div class="mc-name-cn">精油按摩</div>
+            <div class="mc-divider"></div>
+            <div class="mc-price-rows">
+              <div class="mc-price-row"><span class="mc-dur">60 mins</span><span class="mc-price">RM 105</span></div>
+              <div class="mc-price-row"><span class="mc-dur">90 mins</span><span class="mc-price">RM 140</span></div>
+              <div class="mc-price-row"><span class="mc-dur">120 mins</span><span class="mc-price">RM 180</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mc">
+          <div class="mc-std-body">
+            <div class="mc-name">Aromatherapy Massage</div>
+            <div class="mc-name-cn">香薰按摩</div>
+            <div class="mc-divider"></div>
+            <div class="mc-price-rows">
+              <div class="mc-price-row"><span class="mc-dur">60 mins</span><span class="mc-price">RM 120</span></div>
+              <div class="mc-price-row"><span class="mc-dur">90 mins</span><span class="mc-price">RM 165</span></div>
+              <div class="mc-price-row"><span class="mc-dur">120 mins</span><span class="mc-price">RM 205</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SPECIAL TREATMENT ── -->
+  <div class="menu-panel" id="panel-special">
+    <div class="menu-content-inner">
+      <div class="panel-header">
+        <span class="panel-header-label">Special Treatment 特别护理</span>
+        <div class="panel-header-rule"></div>
+      </div>
+      <div class="mc-grid">
+
+        <div class="mc">
+          <div class="mc-std-body">
+            <div class="mc-name">Sports Massage</div>
+            <div class="mc-name-cn">运动按摩</div>
+            <div class="mc-divider"></div>
+            <div class="mc-price-rows">
+              <div class="mc-price-row"><span class="mc-dur">60 mins</span><span class="mc-price">RM 155</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mc">
+          <div class="mc-std-body">
+            <div class="mc-name">Hot Candle Massage</div>
+            <div class="mc-name-cn">热蜡按摩</div>
+            <div class="mc-divider"></div>
+            <div class="mc-price-rows">
+              <div class="mc-price-row"><span class="mc-dur">60 mins</span><span class="mc-price">RM 175</span></div>
+              <div class="mc-price-row"><span class="mc-dur">90 mins</span><span class="mc-price">RM 255</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mc">
+          <div class="mc-std-body">
+            <div class="mc-name">Aromatherapy Hot Oil Massage</div>
+            <div class="mc-name-cn">香薰热精油按摩</div>
+            <div class="mc-divider"></div>
+            <div class="mc-price-rows">
+              <div class="mc-price-row"><span class="mc-dur">60 mins</span><span class="mc-price">RM 140</span></div>
+              <div class="mc-price-row"><span class="mc-dur">90 mins</span><span class="mc-price">RM 190</span></div>
+              <div class="mc-price-row"><span class="mc-dur">120 mins</span><span class="mc-price">RM 230</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mc">
+          <div class="mc-std-body">
+            <div class="mc-name">Hot Stone Massage</div>
+            <div class="mc-name-cn">热石按摩</div>
+            <div class="mc-divider"></div>
+            <div class="mc-price-rows">
+              <div class="mc-price-row"><span class="mc-dur">60 mins</span><span class="mc-price">RM 165</span></div>
+              <div class="mc-price-row"><span class="mc-dur">90 mins</span><span class="mc-price">RM 215</span></div>
+              <div class="mc-price-row"><span class="mc-dur">120 mins</span><span class="mc-price">RM 255</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mc">
+          <div class="mc-std-body">
+            <div class="mc-name">Thai Balm Massage</div>
+            <div class="mc-name-cn">泰式万金油按摩</div>
+            <div class="mc-divider"></div>
+            <div class="mc-price-rows">
+              <div class="mc-price-row"><span class="mc-dur">60 mins</span><span class="mc-price">RM 105</span></div>
+              <div class="mc-price-row"><span class="mc-dur">90 mins</span><span class="mc-price">RM 145</span></div>
+              <div class="mc-price-row"><span class="mc-dur">120 mins</span><span class="mc-price">RM 180</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mc">
+          <div class="mc-std-body">
+            <div class="mc-name">Thai Herbal Compress Massage</div>
+            <div class="mc-name-cn">药草按压泰式按摩</div>
+            <div class="mc-divider"></div>
+            <div class="mc-price-rows">
+              <div class="mc-price-row"><span class="mc-dur">45 mins (Balls Only)</span><span class="mc-price">RM 95</span></div>
+              <div class="mc-price-row"><span class="mc-dur">90 mins</span><span class="mc-price">RM 180</span></div>
+              <div class="mc-price-row"><span class="mc-dur">120 mins</span><span class="mc-price">RM 220</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PACKAGES ── -->
+  <div class="menu-panel" id="panel-pkg">
+    <div class="menu-content-inner">
+      <div class="panel-header">
+        <span class="panel-header-label">Packages 附加配套</span>
+        <div class="panel-header-rule"></div>
+      </div>
+      <div class="mc-grid">
+
+        <div class="mc">
+          <div class="mc-photo-area mc-photo-area--amber">
+            <div class="mc-photo-overlay">
+              <div class="mc-photo-eyebrow">Package A · 90 mins</div>
+              <div class="mc-photo-name">Foot + Shoulder &amp; Head</div>
+            </div>
+          </div>
+          <div class="mc-photo-body">
+            <p class="mc-photo-desc">Foot massage (60 mins) + Shoulder &amp; Head massage (30 mins)</p>
+            <div class="mc-photo-footer">
+              <span class="mc-dur">90 mins</span>
+              <span class="mc-price">RM 108</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mc">
+          <div class="mc-photo-area mc-photo-area--amber">
+            <div class="mc-photo-overlay">
+              <div class="mc-photo-eyebrow">Package B · 120 mins</div>
+              <div class="mc-photo-name">Foot + Thai Traditional</div>
+            </div>
+          </div>
+          <div class="mc-photo-body">
+            <p class="mc-photo-desc">Foot massage (60 mins) + Thai Traditional Massage (60 mins)</p>
+            <div class="mc-photo-footer">
+              <span class="mc-dur">120 mins</span>
+              <span class="mc-price">RM 148</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mc">
+          <div class="mc-photo-area mc-photo-area--amber">
+            <div class="mc-photo-overlay">
+              <div class="mc-photo-eyebrow">Package C · 120 mins</div>
+              <div class="mc-photo-name">Foot + Oil Massage</div>
+            </div>
+          </div>
+          <div class="mc-photo-body">
+            <p class="mc-photo-desc">Foot massage (60 mins) + Oil Massage (60 mins)</p>
+            <div class="mc-photo-footer">
+              <span class="mc-dur">120 mins</span>
+              <span class="mc-price">RM 158</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mc">
+          <div class="mc-photo-area mc-photo-area--amber">
+            <div class="mc-photo-overlay">
+              <div class="mc-photo-eyebrow">Package D · 120 mins</div>
+              <div class="mc-photo-name">Foot + Aromatherapy</div>
+            </div>
+          </div>
+          <div class="mc-photo-body">
+            <p class="mc-photo-desc">Foot massage (60 mins) + Aromatherapy Massage (60 mins)</p>
+            <div class="mc-photo-footer">
+              <span class="mc-dur">120 mins</span>
+              <span class="mc-price">RM 168</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mc">
+          <div class="mc-photo-area mc-photo-area--amber">
+            <div class="mc-photo-overlay">
+              <div class="mc-photo-eyebrow">Package E · 150 mins</div>
+              <div class="mc-photo-name">Foot + Aromatherapy (Extended)</div>
+            </div>
+          </div>
+          <div class="mc-photo-body">
+            <p class="mc-photo-desc">Foot massage (60 mins) + Aromatherapy Massage (90 mins)</p>
+            <div class="mc-photo-footer">
+              <span class="mc-dur">150 mins</span>
+              <span class="mc-price">RM 198</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mc">
+          <div class="mc-photo-area mc-photo-area--amber">
+            <div class="mc-photo-overlay">
+              <div class="mc-photo-eyebrow">Package F · 180 mins</div>
+              <div class="mc-photo-name">Foot + Aromatherapy (Full)</div>
+            </div>
+          </div>
+          <div class="mc-photo-body">
+            <p class="mc-photo-desc">Foot massage (60 mins) + Aromatherapy Massage (120 mins)</p>
+            <div class="mc-photo-footer">
+              <span class="mc-dur">180 mins</span>
+              <span class="mc-price">RM 248</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── OTHER TREATMENTS ── -->
+  <div class="menu-panel" id="panel-other">
+    <div class="menu-content-inner">
+      <div class="panel-header">
+        <span class="panel-header-label">Other Treatments 其它护理</span>
+        <div class="panel-header-rule"></div>
+      </div>
+      <div class="mc-grid">
+
+        <div class="mc">
+          <div class="mc-std-body">
+            <div class="mc-name">Body Scrub</div>
+            <div class="mc-name-cn">全身磨砂护理</div>
+            <div class="mc-divider"></div>
+            <div class="mc-price-rows">
+              <div class="mc-price-row"><span class="mc-dur">45 mins</span><span class="mc-price">RM 88</span></div>
+            </div>
+            <div class="mc-note">30 mins scrub · 15 mins shower</div>
+          </div>
+        </div>
+
+        <div class="mc">
+          <div class="mc-std-body">
+            <div class="mc-name">Shoulder Massage</div>
+            <div class="mc-name-cn">肩部按摩</div>
+            <div class="mc-divider"></div>
+            <div class="mc-price-rows">
+              <div class="mc-price-row"><span class="mc-dur">30 mins</span><span class="mc-price">RM 50</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mc">
+          <div class="mc-std-body">
+            <div class="mc-name">Head Massage</div>
+            <div class="mc-name-cn">头部按摩</div>
+            <div class="mc-divider"></div>
+            <div class="mc-price-rows">
+              <div class="mc-price-row"><span class="mc-dur">30 mins</span><span class="mc-price">RM 50</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mc">
+          <div class="mc-std-body">
+            <div class="mc-name">Cupping</div>
+            <div class="mc-name-cn">拔罐</div>
+            <div class="mc-divider"></div>
+            <div class="mc-price-rows">
+              <div class="mc-price-row"><span class="mc-dur">30 mins</span><span class="mc-price">RM 50</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mc">
+          <div class="mc-std-body">
+            <div class="mc-name">Guasa</div>
+            <div class="mc-name-cn">刮痧</div>
+            <div class="mc-divider"></div>
+            <div class="mc-price-rows">
+              <div class="mc-price-row"><span class="mc-dur">30 mins</span><span class="mc-price">RM 50</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mc">
+          <div class="mc-std-body">
+            <div class="mc-name">Ear Candle</div>
+            <div class="mc-name-cn">耳烛护理</div>
+            <div class="mc-divider"></div>
+            <div class="mc-price-rows">
+              <div class="mc-price-row"><span class="mc-dur">15 mins</span><span class="mc-price">RM 50</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SPA ── -->
+  <div class="menu-panel" id="panel-spa">
+    <div class="menu-content-inner">
+      <div class="panel-header">
+        <span class="panel-header-label">Spa 水疗</span>
+        <div class="panel-header-rule"></div>
+      </div>
+      <div class="mc-grid">
+
+        <!-- Aroma Head Spa -->
+        <div class="mc">
+          <div class="mc-spa-photo-area mc-spa-photo-area--aroma">
+            <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(20,16,8,0.75) 100%);"></div>
+            <div style="position:relative;z-index:1;">
+              <div class="mc-photo-eyebrow">Spa Experience</div>
+              <div class="mc-photo-name">Aroma Head Spa</div>
+              <div class="mc-photo-sub">头部香薰水疗</div>
+            </div>
+          </div>
+          <div class="mc-spa-body">
+            <div class="mc-spa-price-rows">
+              <div class="mc-spa-price-row">
+                <span class="mc-spa-dur">Express · 60 mins</span>
+                <span class="mc-spa-price">RM 149</span>
+              </div>
+              <div class="mc-spa-price-row">
+                <span class="mc-spa-dur">Standard · 90 mins</span>
+                <span class="mc-spa-price">RM 188</span>
+              </div>
+            </div>
+            <div class="mc-inclusions-label">Inclusions</div>
+            <div class="mc-inclusions-text">Warm Eye Mask · Dry Head Massage · Water Therapy · Aromatherapy Head, Neck &amp; Shoulder Massage · Bubbles Shampooing · Blow Dry &amp; Basic Style · Complimentary Refreshment Set</div>
+          </div>
+        </div>
+
+        <!-- Signature Foot Spa -->
+        <div class="mc">
+          <div class="mc-spa-photo-area mc-spa-photo-area--foot">
+            <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(16,18,8,0.75) 100%);"></div>
+            <div style="position:relative;z-index:1;">
+              <div class="mc-photo-eyebrow" style="color:var(--sage-light)">Foot Care</div>
+              <div class="mc-photo-name">Signature Foot Spa</div>
+              <div class="mc-photo-sub">Soak · Scrub · Scrape</div>
+            </div>
+          </div>
+          <div class="mc-spa-body">
+            <div class="mc-spa-price-rows">
+              <div class="mc-spa-price-row">
+                <span class="mc-spa-dur">60 mins</span>
+                <span class="mc-spa-price">RM 118</span>
+              </div>
+            </div>
+            <div class="mc-inclusions-label">Inclusions</div>
+            <div class="mc-inclusions-text">Relaxing Foot Soak · Dead skin &amp; callus removal · Gentle Foot Scrub · Nourishing Foot Moisturizer</div>
+            <div class="mc-spa-note">Uses high-quality Korean electric callus remover</div>
+          </div>
+        </div>
+
+        <!-- Zen Spa Package -->
+        <div class="mc" style="border:1px solid rgba(184,144,42,0.18);">
+          <div class="mc-badge">Signature</div>
+          <div class="mc-spa-photo-area mc-spa-photo-area--zen">
+            <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 20%,rgba(25,16,8,0.8) 100%);"></div>
+            <div style="position:relative;z-index:1;">
+              <div class="mc-photo-eyebrow">Signature Package · 3 Hours</div>
+              <div class="mc-photo-name">Zen Spa Package</div>
+              <div class="mc-photo-sub">A perfect escape for deep relaxation</div>
+            </div>
+          </div>
+          <div class="mc-spa-body">
+            <div class="mc-spa-breakdown">
+              <div class="mc-spa-breakdown-row"><span>Aromatherapy Massage</span><span>90 mins</span></div>
+              <div class="mc-spa-breakdown-row"><span>Body Scrub</span><span>45 mins</span></div>
+              <div class="mc-spa-breakdown-row"><span>Golden Zen Bath</span><span>45 mins</span></div>
+            </div>
+            <div class="mc-pax-row">
+              <div class="mc-pax-box">
+                <div class="mc-pax-label">1 Pax</div>
+                <div class="mc-pax-price">RM 398</div>
+              </div>
+              <div class="mc-pax-box">
+                <div class="mc-pax-label">2 Pax</div>
+                <div class="mc-pax-price">RM 658</div>
+              </div>
+            </div>
+            <div class="mc-spa-footer-note">Includes complimentary refreshment set · Advance booking required</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- SST Notice -->
+  <div class="sst-notice">
+    <p><strong>All prices are inclusive of 8% SST.</strong> · 所有价格已包含8%SST · Prices subject to change without prior notice.</p>
+  </div>
+
+</div><!-- end menu-content-section -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">THAI<span>ZEN</span></div>
+      <div class="footer-tagline">Wellness &amp; Spa · George Town, Penang</div>
+      <div class="footer-tagline" style="font-style:italic;font-size:0.8rem;opacity:0.6;margin-top:4px">A Refreshment for Every Sense</div>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h5>Treatments</h5>
+        <a href="menu.html">Basic Harmony</a>
+        <a href="menu.html">Special Treatment</a>
+        <a href="menu.html">Packages</a>
+        <a href="menu.html">Other Treatments</a>
+        <a href="menu.html">Spa</a>
+      </div>
+      <div class="footer-col">
+        <h5>Visit</h5>
+        <p>197 &amp; 199, Jalan Magazine</p>
+        <p>George Town, 10300</p>
+        <p>Pulau Pinang, Malaysia</p>
+        <p style="margin-top:8px">Open Daily: 12pm – 12am</p>
+      </div>
+      <div class="footer-col">
+        <h5>Book</h5>
+        <a href="index.html#booking">Online Booking</a>
+        <a href="index.html#booking">Walk-in Welcome</a>
+        <a href="index.html#membership">Member Perks</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Thaizen Wellness &amp; Spa. All rights reserved.</div>
+    <div class="footer-sst">All prices inclusive of 8% SST · 所有价格已包含8%SST</div>
+  </div>
+</footer>
+
+<script>
+function showTab(btn, panelId) {
+  document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(panelId).classList.add('active');
+  btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+}
+</script>
+</body>
+</html>

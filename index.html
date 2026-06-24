@@ -907,6 +907,154 @@ footer {
   text-transform: uppercase;
 }
 
+/* ══ MENU TEASER SECTION ══ */
+.menu-teaser-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px 80px;
+  background: #19160f;
+  border-top: 1px solid rgba(184,144,42,0.08);
+  border-bottom: 1px solid rgba(184,144,42,0.08);
+}
+.menu-teaser-rule-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 16px;
+  width: 100%;
+  max-width: 1080px;
+  justify-content: center;
+}
+.menu-teaser-rule { flex: 1; height: 1px; background: rgba(184,144,42,0.12); }
+.menu-teaser-eyebrow {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.5rem; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--gold);
+  white-space: nowrap;
+}
+.menu-teaser-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.4rem, 3.5vw, 3.4rem);
+  font-weight: 300; color: var(--gold-pale);
+  text-align: center; margin-bottom: 14px;
+}
+.menu-teaser-title em { font-style: italic; }
+.menu-teaser-sub {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.67rem; color: var(--clay);
+  opacity: 0.55; text-align: center;
+  max-width: 520px; line-height: 1.8;
+  margin-bottom: 72px;
+}
+.menu-teaser-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+  max-width: 1080px;
+  margin-bottom: 56px;
+}
+.mtc {
+  display: flex; flex-direction: column;
+  background: var(--dark-card);
+  border-top: 2px solid var(--gold);
+  overflow: hidden; position: relative;
+}
+.mtc-signature-badge {
+  position: absolute; top: 14px; right: 0;
+  background: var(--gold); padding: 5px 14px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.44rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--dark-bg);
+  z-index: 2;
+}
+.mtc-photo {
+  height: 180px; position: relative;
+  display: flex; align-items: flex-end; padding: 24px;
+}
+.mtc-photo--basic { background: linear-gradient(150deg, #2e1c06 0%, #3a2508 50%, #1a1208 100%); }
+.mtc-photo--special { background: linear-gradient(150deg, #0e1208 0%, #1a2010 50%, #0a0e06 100%); }
+.mtc-photo--spa { background: linear-gradient(150deg, #2a1606 0%, #402008 50%, #1e1208 100%); }
+.mtc-photo::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, rgba(20,16,8,0.7) 100%);
+}
+.mtc-photo-content { position: relative; z-index: 1; }
+.mtc-category {
+  font-family: 'Jost', sans-serif; font-size: 0.44rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold-light); opacity: 0.7; margin-bottom: 6px;
+}
+.mtc-category--sage { color: var(--sage-light); }
+.mtc-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.44rem; font-weight: 300;
+  color: var(--gold-pale); font-style: italic;
+}
+.mtc-name-cn {
+  font-family: 'Jost', sans-serif; font-size: 0.56rem;
+  color: var(--clay); opacity: 0.5; letter-spacing: 0.04em;
+  margin-top: 2px;
+}
+.mtc-body {
+  padding: 24px 28px 28px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.mtc-desc {
+  font-family: 'Jost', sans-serif; font-size: 0.61rem;
+  color: var(--clay); opacity: 0.6; line-height: 1.7;
+}
+.mtc-footer {
+  display: flex; flex-direction: row;
+  justify-content: space-between; align-items: baseline;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.mtc-dur {
+  font-family: 'Jost', sans-serif; font-size: 0.5rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--sage); opacity: 0.7;
+}
+.mtc-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.11rem; color: var(--gold);
+}
+.menu-teaser-cta-block {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 20px;
+}
+.menu-teaser-hint {
+  font-family: 'Jost', sans-serif; font-size: 0.56rem;
+  color: var(--clay); opacity: 0.45;
+  letter-spacing: 0.1em; text-align: center;
+}
+.menu-teaser-cta {
+  display: flex; flex-direction: row;
+  align-items: center;
+  border: 1px solid rgba(184,144,42,0.3);
+  text-decoration: none;
+  transition: border-color 0.25s;
+}
+.menu-teaser-cta:hover { border-color: rgba(184,144,42,0.65); }
+.menu-teaser-cta-text {
+  font-family: 'Jost', sans-serif; font-size: 0.56rem;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gold-pale); padding: 14px 40px;
+}
+.menu-teaser-cta-arrow {
+  border-left: 1px solid rgba(184,144,42,0.3);
+  padding: 14px 20px; display: flex; align-items: center;
+}
+@media(max-width:960px) {
+  .menu-teaser-section { padding: 72px 24px; }
+  .menu-teaser-cards { grid-template-columns: 1fr; }
+}
+@media(max-width:640px) {
+  .menu-teaser-cards { gap: 16px; }
+}
 </style>
 </head>
 <body>
@@ -930,7 +1078,7 @@ footer {
   <nav>
     <a href="#hero">Home</a>
     <a href="#info">Visit Us</a>
-    <a href="#menu">Menu</a>
+    <a href="menu.html">Menu</a>
     <a href="#membership">Membership</a>
     <a href="#booking" class="nav-cta">Book Now</a>
   </nav>
@@ -941,7 +1089,7 @@ footer {
 <nav class="mobile-nav" id="mobileNav">
   <a href="#hero" onclick="closeMobileNav()">Home</a>
   <a href="#info" onclick="closeMobileNav()">Visit Us</a>
-  <a href="#menu" onclick="closeMobileNav()">Menu</a>
+  <a href="menu.html" onclick="closeMobileNav()">Menu</a>
   <a href="#membership" onclick="closeMobileNav()">Membership</a>
   <a class="mob-cta-btn" href="#booking" onclick="closeMobileNav()">Book Now</a>
 </nav>
@@ -1027,107 +1175,80 @@ footer {
   </div>
 </section>
 
-<!-- ══ MENU SECTION ══ -->
-<section class="menu-section" id="menu">
-  <div class="section-eyebrow">Our Treatments</div>
-  <h2 class="section-title">The Thaizen <em>Menu</em></h2>
-  <p class="section-note">All prices inclusive of 8% SST · 所有价格已包含8% SST</p>
-  <div class="menu-tabs-wrapper">
-    <div class="menu-tabs">
-      <button class="menu-tab active" onclick="showMenuTab(this,'tab-basic')">Basic Harmony 基本局部护理</button>
-      <button class="menu-tab" onclick="showMenuTab(this,'tab-special')">Special Treatment 特别护理</button>
-      <button class="menu-tab" onclick="showMenuTab(this,'tab-pkg')">Packages 附加配套</button>
-      <button class="menu-tab" onclick="showMenuTab(this,'tab-other')">Other Treatments 其它护理</button>
-      <button class="menu-tab" onclick="showMenuTab(this,'tab-spa')">Spa 水疗</button>
-    </div>
-    <span class="tabs-scroll-hint" aria-hidden="true">›</span>
+<!-- ══ MENU TEASER SECTION ══ -->
+<section class="menu-teaser-section" id="menu">
+  <div class="menu-teaser-rule-row">
+    <div class="menu-teaser-rule"></div>
+    <div class="menu-teaser-eyebrow">Our Treatments</div>
+    <div class="menu-teaser-rule"></div>
   </div>
-  <div class="menu-panel active" id="tab-basic">
-    <div class="menu-grid-basic">
-      <div class="menu-item-card"><div class="mic-name">Foot Massage</div><div class="mic-name-cn">足部按摩</div><div class="price-rows"><div class="price-row"><span class="dur-badge">60 mins</span><span class="price-val">RM 69</span></div></div></div>
-      <div class="menu-item-card"><div class="mic-name">Thai Traditional Massage</div><div class="mic-name-cn">泰式传统按摩</div><div class="price-rows"><div class="price-row"><span class="dur-badge">60 mins</span><span class="price-val">RM 95</span></div><div class="price-row"><span class="dur-badge">90 mins</span><span class="price-val">RM 130</span></div><div class="price-row"><span class="dur-badge">120 mins</span><span class="price-val">RM 165</span></div></div></div>
-      <div class="menu-item-card"><div class="mic-name">Oil Massage</div><div class="mic-name-cn">精油按摩</div><div class="price-rows"><div class="price-row"><span class="dur-badge">60 mins</span><span class="price-val">RM 105</span></div><div class="price-row"><span class="dur-badge">90 mins</span><span class="price-val">RM 140</span></div><div class="price-row"><span class="dur-badge">120 mins</span><span class="price-val">RM 180</span></div></div></div>
-      <div class="menu-item-card"><div class="mic-name">Aromatherapy Massage</div><div class="mic-name-cn">香薰按摩</div><div class="price-rows"><div class="price-row"><span class="dur-badge">60 mins</span><span class="price-val">RM 120</span></div><div class="price-row"><span class="dur-badge">90 mins</span><span class="price-val">RM 165</span></div><div class="price-row"><span class="dur-badge">120 mins</span><span class="price-val">RM 205</span></div></div></div>
-    </div>
-  </div>
-  <div class="menu-panel" id="tab-special">
-    <div class="special-grid">
-      <div class="spl-card"><div class="spl-icon">💪</div><div class="spl-name">Sports Massage</div><div class="spl-name-cn">运动按摩</div><div class="price-rows"><div class="price-row"><span class="dur-badge">60 mins</span><span class="price-val">RM 155</span></div></div></div>
-      <div class="spl-card"><div class="spl-icon">🕯️</div><div class="spl-name">Hot Candle Massage</div><div class="spl-name-cn">热蜡按摩</div><div class="price-rows"><div class="price-row"><span class="dur-badge">60 mins</span><span class="price-val">RM 175</span></div><div class="price-row"><span class="dur-badge">90 mins</span><span class="price-val">RM 255</span></div></div></div>
-      <div class="spl-card"><div class="spl-icon">🌸</div><div class="spl-name">Aromatherapy Hot Oil Massage</div><div class="spl-name-cn">香薰热精油按摩</div><div class="price-rows"><div class="price-row"><span class="dur-badge">60 mins</span><span class="price-val">RM 140</span></div><div class="price-row"><span class="dur-badge">90 mins</span><span class="price-val">RM 190</span></div><div class="price-row"><span class="dur-badge">120 mins</span><span class="price-val">RM 230</span></div></div></div>
-      <div class="spl-card"><div class="spl-icon">🪨</div><div class="spl-name">Hot Stone Massage</div><div class="spl-name-cn">热石按摩</div><div class="price-rows"><div class="price-row"><span class="dur-badge">60 mins</span><span class="price-val">RM 165</span></div><div class="price-row"><span class="dur-badge">90 mins</span><span class="price-val">RM 215</span></div><div class="price-row"><span class="dur-badge">120 mins</span><span class="price-val">RM 255</span></div></div></div>
-      <div class="spl-card"><div class="spl-icon">🌿</div><div class="spl-name">Thai Balm Massage</div><div class="spl-name-cn">泰式万金油按摩</div><div class="price-rows"><div class="price-row"><span class="dur-badge">60 mins</span><span class="price-val">RM 105</span></div><div class="price-row"><span class="dur-badge">90 mins</span><span class="price-val">RM 145</span></div><div class="price-row"><span class="dur-badge">120 mins</span><span class="price-val">RM 180</span></div></div></div>
-      <div class="spl-card"><div class="spl-icon">🌺</div><div class="spl-name">Thai Herbal Compress Massage</div><div class="spl-name-cn">药草按压泰式按摩</div><div class="price-rows"><div class="price-row"><span class="dur-badge">90 mins</span><span class="price-val">RM 180</span></div><div class="price-row"><span class="dur-badge">120 mins</span><span class="price-val">RM 220</span></div><div class="price-row"><span class="dur-badge">45 mins (Balls Only)</span><span class="price-val">RM 95</span></div></div></div>
-    </div>
-  </div>
-  <div class="menu-panel" id="tab-pkg">
-    <div class="pkg-list">
-      <div class="pkg-card"><div class="pkg-left"><div class="pkg-code">Package A</div><div class="pkg-name">Foot + Shoulder & Head Massage</div><div class="pkg-name-cn">足部按摩 + 肩部 + 头部按摩</div><div class="pkg-desc">Foot massage (60 mins) + Shoulder & Head massage (30 mins)</div></div><div class="pkg-right"><div class="pkg-dur">90 mins</div><div class="pkg-price">RM 108</div></div></div>
-      <div class="pkg-card"><div class="pkg-left"><div class="pkg-code">Package B</div><div class="pkg-name">Foot + Thai Traditional Massage</div><div class="pkg-name-cn">足部按摩 + 泰式传统按摩</div><div class="pkg-desc">Foot massage (60 mins) + Thai Traditional Massage (60 mins)</div></div><div class="pkg-right"><div class="pkg-dur">120 mins</div><div class="pkg-price">RM 148</div></div></div>
-      <div class="pkg-card"><div class="pkg-left"><div class="pkg-code">Package C</div><div class="pkg-name">Foot + Oil Massage</div><div class="pkg-name-cn">足部按摩 + 精油按摩</div><div class="pkg-desc">Foot massage (60 mins) + Oil Massage (60 mins)</div></div><div class="pkg-right"><div class="pkg-dur">120 mins</div><div class="pkg-price">RM 158</div></div></div>
-      <div class="pkg-card"><div class="pkg-left"><div class="pkg-code">Package D</div><div class="pkg-name">Foot + Aromatherapy Massage</div><div class="pkg-name-cn">足部按摩 + 香薰按摩</div><div class="pkg-desc">Foot massage (60 mins) + Aromatherapy Massage (60 mins)</div></div><div class="pkg-right"><div class="pkg-dur">120 mins</div><div class="pkg-price">RM 168</div></div></div>
-      <div class="pkg-card"><div class="pkg-left"><div class="pkg-code">Package E</div><div class="pkg-name">Foot + Aromatherapy Massage</div><div class="pkg-name-cn">足部按摩 + 香薰按摩</div><div class="pkg-desc">Foot massage (60 mins) + Aromatherapy Massage (90 mins)</div></div><div class="pkg-right"><div class="pkg-dur">150 mins</div><div class="pkg-price">RM 198</div></div></div>
-      <div class="pkg-card"><div class="pkg-left"><div class="pkg-code">Package F</div><div class="pkg-name">Foot + Aromatherapy Massage</div><div class="pkg-name-cn">足部按摩 + 香薰按摩</div><div class="pkg-desc">Foot massage (60 mins) + Aromatherapy Massage (120 mins)</div></div><div class="pkg-right"><div class="pkg-dur">180 mins</div><div class="pkg-price">RM 248</div></div></div>
-    </div>
-  </div>
-  <div class="menu-panel" id="tab-other">
-    <div class="other-grid">
-      <div class="other-card"><div class="other-icon">✨</div><div class="other-name">Body Scrub</div><div class="other-cn">全身磨砂护理</div><div class="other-meta"><span class="other-dur">45 mins</span><span class="other-price">RM 88</span></div><div class="other-note">30 mins scrub · 15 mins shower</div></div>
-      <div class="other-card"><div class="other-icon">💆</div><div class="other-name">Shoulder Massage</div><div class="other-cn">肩部按摩</div><div class="other-meta"><span class="other-dur">30 mins</span><span class="other-price">RM 50</span></div></div>
-      <div class="other-card"><div class="other-icon">🧠</div><div class="other-name">Head Massage</div><div class="other-cn">头部按摩</div><div class="other-meta"><span class="other-dur">30 mins</span><span class="other-price">RM 50</span></div></div>
-      <div class="other-card"><div class="other-icon">🫧</div><div class="other-name">Cupping</div><div class="other-cn">拔罐</div><div class="other-meta"><span class="other-dur">30 mins</span><span class="other-price">RM 50</span></div></div>
-      <div class="other-card"><div class="other-icon">🌬️</div><div class="other-name">Guasa</div><div class="other-cn">刮痧</div><div class="other-meta"><span class="other-dur">30 mins</span><span class="other-price">RM 50</span></div></div>
-      <div class="other-card"><div class="other-icon">🕯️</div><div class="other-name">Ear Candle</div><div class="other-cn">耳烛护理</div><div class="other-meta"><span class="other-dur">15 mins</span><span class="other-price">RM 50</span></div></div>
-    </div>
-  </div>
-  <div class="menu-panel" id="tab-spa">
-    <div class="spa-grid">
-      <div class="spa-card">
-        <div class="spa-card-title">Aroma Head Spa</div>
-        <div class="spa-card-sub">头部香薰水疗</div>
-        <div class="spa-tiers">
-          <div class="spa-tier"><span class="spa-tier-label">Express · 60 mins</span><span class="spa-tier-price">RM 149</span></div>
-          <div class="spa-tier"><span class="spa-tier-label">Standard · 90 mins</span><span class="spa-tier-price">RM 188</span></div>
+  <h2 class="menu-teaser-title">The Thaizen <em>Menu</em></h2>
+  <p class="menu-teaser-sub">From grounding Thai traditionals to signature spa journeys — every treatment is crafted to restore you from within. Explore the full menu to find your ritual.</p>
+
+  <div class="menu-teaser-cards">
+    <!-- Thai Traditional Massage -->
+    <div class="mtc">
+      <div class="mtc-photo mtc-photo--basic">
+        <div class="mtc-photo-content">
+          <div class="mtc-category">Basic Harmony</div>
+          <div class="mtc-name">Thai Traditional Massage</div>
+          <div class="mtc-name-cn">泰式传统按摩</div>
         </div>
-        <ul class="spa-inclusions">
-          <li>Warm Eye Mask</li>
-          <li>Dry Head Massage</li>
-          <li>Water Therapy</li>
-          <li>Aromatherapy Head, Neck &amp; Shoulder Massage</li>
-          <li>Bubbles Shampooing with Massage</li>
-          <li>Blow Dry &amp; Basic Style</li>
-          <li>Complimentary Refreshment Set for the Perfect Finish</li>
-        </ul>
       </div>
-      <div class="spa-card">
-        <div class="spa-card-title">Signature Foot Spa</div>
-        <div class="spa-card-sub">Soak, Scrub, Scrape for sparkling clean!</div>
-        <div class="spa-single-price"><span class="spa-price-dur">60 mins</span><span class="spa-price-val">RM 118</span></div>
-        <ul class="spa-inclusions">
-          <li>Relaxing Foot Soak</li>
-          <li>Dead skin and callus removal</li>
-          <li>Gentle Foot Scrub</li>
-          <li>Nourishing Foot Moisturizer</li>
-        </ul>
-        <div class="spa-note">Use high-quality Korean electric callus remover</div>
+      <div class="mtc-body">
+        <p class="mtc-desc">Ancient dry technique balancing energy lines through rhythmic acupressure and passive stretching. The cornerstone of Thai healing tradition.</p>
+        <div class="mtc-footer">
+          <span class="mtc-dur">60 · 90 · 120 mins</span>
+          <span class="mtc-price">from RM 95</span>
+        </div>
       </div>
-      <div class="spa-card">
-        <div class="spa-card-title">Zen Spa Package</div>
-        <div class="spa-card-sub">A perfect escape for deep relaxation · 3 Hours</div>
-        <div class="spa-breakdown">
-          <div class="spa-breakdown-row"><span>Aromatherapy Massage</span><span>90 mins</span></div>
-          <div class="spa-breakdown-row"><span>Body Scrub</span><span>45 mins</span></div>
-          <div class="spa-breakdown-row"><span>Golden Zen Bath</span><span>45 mins</span></div>
+    </div>
+    <!-- Aromatherapy Hot Oil Massage -->
+    <div class="mtc">
+      <div class="mtc-photo mtc-photo--special">
+        <div class="mtc-photo-content">
+          <div class="mtc-category mtc-category--sage">Special Treatment</div>
+          <div class="mtc-name">Aromatherapy Hot Oil</div>
+          <div class="mtc-name-cn">香薰热油按摩</div>
         </div>
-        <div class="spa-pax">
-          <div class="spa-pax-box"><div class="spa-pax-label">1 PAX</div><div class="spa-pax-price">RM 398</div><div class="spa-pax-sub">per person</div></div>
-          <div class="spa-pax-box"><div class="spa-pax-label">2 PAX</div><div class="spa-pax-price">RM 658</div><div class="spa-pax-sub">for two persons</div></div>
+      </div>
+      <div class="mtc-body">
+        <p class="mtc-desc">Warm therapeutic oil infused with pure aromatics, guided through long flowing strokes to ease tension and awaken the senses.</p>
+        <div class="mtc-footer">
+          <span class="mtc-dur">60 · 90 · 120 mins</span>
+          <span class="mtc-price">from RM 140</span>
         </div>
-        <div class="spa-note" style="margin-top:12px">Includes complimentary refreshment set · Advance booking required</div>
+      </div>
+    </div>
+    <!-- Zen Spa Package -->
+    <div class="mtc">
+      <div class="mtc-signature-badge">Signature</div>
+      <div class="mtc-photo mtc-photo--spa">
+        <div class="mtc-photo-content">
+          <div class="mtc-category">Spa Experience · 3 Hours</div>
+          <div class="mtc-name">Zen Spa Package</div>
+          <div class="mtc-name-cn">A perfect escape for deep relaxation</div>
+        </div>
+      </div>
+      <div class="mtc-body">
+        <p class="mtc-desc">Three hours of layered restoration — Aromatherapy Massage, Body Scrub, and a luxurious Golden Zen Bath ritual.</p>
+        <div class="mtc-footer">
+          <span class="mtc-dur">1 pax · 2 pax</span>
+          <span class="mtc-price">from RM 398</span>
+        </div>
       </div>
     </div>
   </div>
-  <div class="sst-notice"><span>💡</span><p><strong>All prices are inclusive of 8% SST.</strong> · 所有价格已包含8%SST · Prices subject to change without prior notice.</p></div>
+
+  <div class="menu-teaser-cta-block">
+    <p class="menu-teaser-hint">These are just three from a curated menu of 15+ treatments across 5 categories.</p>
+    <a href="menu.html" class="menu-teaser-cta">
+      <span class="menu-teaser-cta-text">Explore the Full Menu</span>
+      <span class="menu-teaser-cta-arrow">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:#b8902a"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </span>
+    </a>
+  </div>
 </section>
 
 <!-- MEMBERSHIP -->
